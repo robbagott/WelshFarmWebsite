@@ -32,6 +32,9 @@ module.exports = function() {
 	** This changes the detected http method to PUT or DELETE*/
 	app.use(methodOverride());
 
+	//Add our routes which in turn require our controllers where needed, thus glueing the project together
+	require('../app/routes/index.server.routes.js')(app);
+
 	//If a request can't be handled by other middleware then try a static file
 	app.use(express.static('../public/'));
 
