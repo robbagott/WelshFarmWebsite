@@ -31,6 +31,10 @@ module.exports = function() {
 	** These are passed through the _method post parameter 
 	** This changes the detected http method to PUT or DELETE*/
 	app.use(methodOverride());
+ 
+	//Sets a folder to search for views and sets a view engine to be called with res.render()
+	app.set('views', './app/views');
+	app.set('view engine', 'ejs');
 
 	//Add our routes which in turn require our controllers where needed, thus glueing the project together
 	require('../app/routes/index.server.routes.js')(app);
