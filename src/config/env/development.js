@@ -1,5 +1,6 @@
 'use strict';
 
 module.exports = {
-	morganSetting: 'dev'
+	morganSetting: 'dev',
+	sessionSecret: 'poniesponiesponies'
 }

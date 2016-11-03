@@ -6,6 +6,7 @@ var compression = require('compression');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');			
 var methodOverride = require('method-override');	
+var session = require('express-session');
 
 module.exports = function() {
 	var app = express();
@@ -18,8 +19,8 @@ module.exports = function() {
 	//Logging
 	app.use(morgan(config.morganSetting));
 
-	/*Some forms send x-form-urlencoded formatted bodies in their post requests.
-	**body-parser attempts to parse the body as such and gives up if it cannot */
+	/* Some forms send x-form-urlencoded formatted bodies in their post requests.
+	** body-parser attempts to parse the body as such and gives up if it cannot */
 	app.use(bodyParser.urlencoded({
 		extended: true
 	}));
@@ -31,6 +32,15 @@ module.exports = function() {
 	** These are passed through the _method post parameter 
 	** This changes the detected http method to PUT or DELETE*/
 	app.use(methodOverride());
+
+	/* Session adds a req.session object to every request object which contains session variables */
+	//MUST CHANGE STORES AT SOME POINT BEFORE PRODUCTION STAGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	//^That should be enough to make you remember! 
+	app.use(session({
+		saveUninitialized: false,		//This setting decides whether a session that's been created but not modified should be saved
+		resave: false,					//This setting decides whether to resave when there were no modifications to the session object
+		secret: config.sessionSecret
+	}));
  
 	//Sets a folder to search for views and sets a view engine to be called with res.render()
 	app.set('views', './app/views');
@@ -38,9 +48,12 @@ module.exports = function() {
 
 	//Add our routes which in turn require our controllers where needed, thus glueing the project together
 	require('../app/routes/index.server.routes.js')(app);
+	require('../app/routes/users.server.routes.js')(app);
 
 	//If a request can't be handled by other middleware then try a static file
 	app.use(express.static('../public/'));
 
+	//Lastly, if nothing has been done, render a something went wrong page
+
 	return app;
-}
+};
