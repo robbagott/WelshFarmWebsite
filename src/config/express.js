@@ -52,7 +52,7 @@ module.exports = function() {
 	require('../app/routes/administrator.server.routes.js')(app);
 
 	//If a request can't be handled by other middleware then try a static file
-	app.use(express.static('../public/'));
+	app.use(express.static('./public/'));
 
 	//Lastly, if nothing has been done, render a something went wrong page
 

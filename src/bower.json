@@ -1,0 +1,8 @@
+{
+  "name": "WelshPonyFarm",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "^1.0.0",
+    "angular-route": "^1.5.8"
+  }
+}
