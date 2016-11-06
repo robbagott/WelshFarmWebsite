@@ -2,5 +2,6 @@
 
 module.exports = {
 	morganSetting: 'tiny',
-	sessionSecret: 'PONIESPONIESPONIES'
+	sessionSecret: 'PONIESPONIESPONIES',
+	db: 'mongodb://localhost/WelshPonyFarm'
 }

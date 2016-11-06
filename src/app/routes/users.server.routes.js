@@ -1,4 +1,8 @@
+"use strict";
+
 module.exports = function(app) {
-	var users = require('../controllers/users.server.controller');
-	app.route('/users').get(users.render);
+	var usersController = require('../controllers/users.server.controller');
+
+	app.route('/users').get(usersController.render)
+		.post(usersController.createUser);
 };

@@ -6,14 +6,17 @@
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var express = require('./config/express');
-//var mongoose = require('.config/mongoose');
+var mongoose = require('./config/mongoose');
 
-//var db = mongoose();
+//Configure and provide database
+var db = mongoose();
+
+//Configure and provide express app
 var app = express();
 
-//express is a node.js server wrapper so we call listen on it.
+//express app is a node.js server wrapper so we call listen on it.
 app.listen(3000);
 
-module.exports = app;
-
 console.log('Welsh Pony Farm Website is listening on http://localhost:3000');
+
+module.exports = app;

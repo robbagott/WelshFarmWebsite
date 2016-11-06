@@ -49,6 +49,7 @@ module.exports = function() {
 	//Add our routes which in turn require our controllers where needed, thus glueing the project together
 	require('../app/routes/index.server.routes.js')(app);
 	require('../app/routes/users.server.routes.js')(app);
+	require('../app/routes/administrator.server.routes.js')(app);
 
 	//If a request can't be handled by other middleware then try a static file
 	app.use(express.static('../public/'));
