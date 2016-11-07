@@ -1,21 +1,30 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title><%= title %></title>
+		<title>Faylin Welsh</title>
+		<base href="/"></base>
+
+		<link rel="stylesheet" href="css/app.css" />
+		<link rel="stylesheet" href="home/css/home.css" />
 	</head>
 	<body>
-		<h1> Welcome to Faylin Welsh</h1>
-
-		<!-- <section ng-include="'/example/views/example.client.view.html'"></section> -->
+		<div id="logo">Faylin Welsh</div>
+		<div id="navbar">
+			<div class="navbarItem"><a href="/horses">Horses</a></div>
+			<div class="navbarItem"><a href="/about">About</a></div>
+			<div class="navbarItem"><a href="/contact">Contact</a></div>
+		</div>
 
 		<section ng-view></section>
+
+		<div id="footer">Footer</div>
 
 		<script type="text/javascript" src="/lib/angular/angular.js"></script>
 		<script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
 
-		<script type="text/javascript" src="/example/example.client.module.js"></script>
-		<script type="text/javascript" src="/example/controllers/example.client.controller.js"></script>
-		<script type="text/javascript" src="/example/config/example.client.routes.js"></script>
+		<script type="text/javascript" src="/home/home.client.module.js"></script>
+		<script type="text/javascript" src="/home/controllers/home.client.controller.js"></script>
+		<script type="text/javascript" src="/home/config/home.client.routes.js"></script>
 
 		<script type="text/javascript" src="/app.js"></script>
 	</body>

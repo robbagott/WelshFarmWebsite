@@ -1,0 +1,22 @@
+#imageContainer {
+	position: relative;
+	width: 99%;
+	height: 870px;
+	overflow: hidden;
+	margin: auto;
+	z-index: -1;
+}
+
+#homeImage {
+	position: absolute;
+	top: -200px;
+	filter: brightness(50%);
+}
+
+#welcomeTextContainer {
+	position: relative;
+	font-size: 30px;
+	margin-top: 200px;
+	margin: auto;
+	width: 500px;
+}

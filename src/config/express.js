@@ -54,7 +54,10 @@ module.exports = function() {
 	//If a request can't be handled by other middleware then try a static file
 	app.use(express.static('./public/'));
 
-	//Lastly, if nothing has been done, render a something went wrong page
+	//Lastly, if nothing has been done so far, we probably want our angular app to handle the route. Load the main app and have it's routing deal with it.
+	app.get('*', function(req, res) {
+		res.render("index");
+	});
 
 	return app;
 };
