@@ -30,7 +30,7 @@ var horseSchema = new Schema({
 	description: {
 		type: String
 	},
-	images: [Object]
+	images: [String]
 });
 
 //Now, create a Model using the schema. A Model allows us to create Documents (Instances of the Model) and define methods (instance and static) for retrieving, saving, and manipulating Documents

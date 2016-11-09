@@ -46,13 +46,12 @@ module.exports = function() {
 	app.set('views', './app/views');
 	app.set('view engine', 'ejs');
 
-	//Add our routes which in turn require our controllers where needed, thus glueing the project together
-	require('../app/routes/index.server.routes.js')(app);
-	require('../app/routes/administrator.server.routes.js')(app);
-
 	//If a request can't be handled by other middleware then try a static file
 	app.use(express.static('./public/'));
 
+	//Add our routes which in turn require our controllers where needed, thus glueing the project together
+	require('../app/routes/admin.server.routes.js')(app);
+	
 	//Lastly, if nothing has been done so far, we probably want our angular app to handle the route. Load the main app and have it's routing deal with it.
 	app.get('*', function(req, res) {
 		res.render("index");

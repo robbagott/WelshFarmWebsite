@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Faylin Welsh</title>
+		<base href="/"></base>
+
+		<!-- some cool fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Pacifico" rel="stylesheet">
+
+		<link rel="stylesheet" href="/css/app.css" />
+		<link rel="stylesheet" href="/admin/login/css/login.css">
+	</head>
+	<body>
+		<div id="topBar">
+			<div id="logo"><a href="/home">Faylin Welsh</a></div>
+			<div id="navbar">
+				<div class="navbarItem"><a href="/login">Admin Panel</a></div>
+			</div>
+		</div>
+		<section id="content" ng-view></section>
+
+		<script type="text/javascript" src="/lib/angular/angular.js"></script>
+		<script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
+
+		<script type="text/javascript" src="/admin/login/login.client.module.js"></script>
+		<script type="text/javascript" src="/admin/login/controllers/login.client.controller.js"></script>
+		<script type="text/javascript" src="/admin/login/config/login.client.routes.js"></script>
+
+		<script type="text/javascript" src="/admin/admin.js"></script>
+	</body>
+</html>
