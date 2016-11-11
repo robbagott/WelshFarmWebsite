@@ -1,6 +1,6 @@
 "use strict";
 
-var adminModule = angular.module("admin", ['ngRoute', "login", "admin_horses"]);
+var adminModule = angular.module('admin', ['ngRoute', 'ngResource', 'login', 'admin_horses']);
 
 adminModule
 	.config(['$locationProvider', function($locationProvider) {
@@ -8,5 +8,5 @@ adminModule
 	}]);
 
 angular.element(document).ready(function() {
-	angular.bootstrap(document, ["admin"]);
+	angular.bootstrap(document, ['admin']);
 });

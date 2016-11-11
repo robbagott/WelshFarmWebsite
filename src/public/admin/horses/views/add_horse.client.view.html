@@ -1,6 +1,18 @@
-<section class="addHorseForm">
-	<form>
+<section class="addHorseForm" ng-controller="AdminHorseController as horses">
+	<form ng-submit="horses.create()">
+		<span class="formItem">Horse Name</span> <br>
+		<input type="text" class="nameInputBox" ng-model="horses.horseName" />
+		<span class="formItem" >Horse Show Name</span> <br>
+		<input type="text" class="nameInputBox" ng-model="horses.horseShowName"/> <br>
+		<span class="formItem">Horse Description</span> <br>
+		<textarea class="descriptionInputBox" ng-model="horses.horseDescription"></textarea> <br>
+		<span class="formItem">Horse Pictures</span> <br>
+		<input type="file" class="nameInputBox" accept=".jpg, .png, .gif, .jpeg, audio/*" /> <br>
+		<input type="submit" class="formItem" />
 
+		<div ng-show="error">
+			<strong ng-bind="horses.error"></strong>
+		</div>
 	</form>
 	<div class="adminMenuItem"><a href="/admin/horses">Back to Menu</a></div>
 </section>

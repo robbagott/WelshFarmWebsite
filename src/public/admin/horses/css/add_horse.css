@@ -3,3 +3,18 @@
 	margin: auto;
 	width: 300px;
 }
+
+.formItem {
+	margin: 10px 0;
+}
+
+.nameInputBox {
+	margin: 10px 0;
+	width: 300px;
+}
+
+.descriptionInputBox {
+	height: 300px;
+	margin: 10px 0;
+	width: 300px;
+}
