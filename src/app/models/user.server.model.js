@@ -30,10 +30,7 @@ var userSchema = new Schema({
 				msg: 'Password is too short'
 			}
 		]
-	},
-	firstName: String,
-	lastName: String,
-	email: String
+	}
 });
 
 //Now, create a Model using the schema. A Model allows us to create Documents (Instances of the Model) and define methods (instance and static) for retrieving, saving, and manipulating Documents

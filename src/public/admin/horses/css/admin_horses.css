@@ -1,0 +1,15 @@
+.adminHorseMenu {
+	font-family: serif;
+	margin: auto;
+	width: 300px;
+}
+
+.adminMenuItem {
+	background-color: rgb(100, 100, 255);
+	color: white;
+	display: inline-block;
+	padding: 5px;
+	margin: 10px;
+	text-align: center;
+	width: 200px;
+}

@@ -51,6 +51,7 @@ module.exports = function() {
 
 	//Add our routes which in turn require our controllers where needed, thus glueing the project together
 	require('../app/routes/admin.server.routes.js')(app);
+	require('../app/routes/horses.server.routes.js')(app);
 	
 	//Lastly, if nothing has been done so far, we probably want our angular app to handle the route. Load the main app and have it's routing deal with it.
 	app.get('*', function(req, res) {
