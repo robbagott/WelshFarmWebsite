@@ -30,7 +30,7 @@ var horseSchema = new Schema({
 		},
 		require: 'Sex is a required field'
 	},
-	fixed: {
+	gelded: {
 		type: Boolean,
 		required: 'Fixed is a required field.'
 	},

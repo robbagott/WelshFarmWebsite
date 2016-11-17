@@ -4,20 +4,13 @@ angular.module('admin_horses').controller('AdminHorseController', ['$routeParams
 	var self = this;
 
 	self.create = function () {
-		console.log("in create");
-		console.log("fixed: " + self.fixed);
 		var horseApi = new HorseApi({
 			showName: self.showName,
 			birthDate: self.birthDate,
 			sex: self.sex,
 			description: self.description,
-			fixed: self.fixed
+			gelded: self.gelded
 		});
-
-		console.log(self.showName);
-		console.log(self.birthDate);
-		console.log(self.sex);
-		console.log(self.description);
 
 		horseApi.$save(function (response) {
 				window.alert('Your horse was saved successfully');
