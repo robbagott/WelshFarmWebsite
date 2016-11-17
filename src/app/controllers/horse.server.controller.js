@@ -5,15 +5,16 @@ var Horse = mongoose.model('Horse');
 
 // Convenience function for extracting error messages
 var getErrorMessage = function (err) {
+	console.log(err);
 	if (err.errors) {
 		for (var errName in err.errors) {
 			if (err.errors[errName].message) {
 				return err.errors[errName].message;
 			}
-			else {
-				return 'Unknown server error';
-			}
 		}
+	}
+	else {
+		return 'Unknown server error';
 	}
 };
 
@@ -48,12 +49,14 @@ exports.list = function (req, res) {
 
 // Gets a horse by name. If there is an error, it is returned in the response
 exports.horseByName = function (req, res, next, name) {
-	Horse.findById(name).exec(function (err, horse) {
+	Horse.findOne({
+		showName: name
+	}).exec(function (err, horse) {
 		if (err) {
 			return next(err);
 		}
 		if (!horse) {
-			return next(new Error('Failed to load article ' + name));
+			return next(new Error('Failed to load horse ' + name));
 		}
 		req.horse = horse;
 		next();
@@ -90,7 +93,7 @@ exports.delete = function (req, res) {
 	horse.remove(function (err) {
 		if (err) {
 			return res.status(400).send({
-				message: getErroeMessage(err)
+				message: getErrorMessage(err)
 			});
 		}
 		else {

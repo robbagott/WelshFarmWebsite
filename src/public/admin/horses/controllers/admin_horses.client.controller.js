@@ -4,15 +4,25 @@ angular.module('admin_horses').controller('AdminHorseController', ['$routeParams
 	var self = this;
 
 	self.create = function () {
+		console.log("in create");
+		console.log("fixed: " + self.fixed);
 		var horseApi = new HorseApi({
-			name: self.horseName,
-			showName: self.horseShowName,
-			description: self.horseDescription
+			showName: self.showName,
+			birthDate: self.birthDate,
+			sex: self.sex,
+			description: self.description,
+			fixed: self.fixed
 		});
+
+		console.log(self.showName);
+		console.log(self.birthDate);
+		console.log(self.sex);
+		console.log(self.description);
 
 		horseApi.$save(function (response) {
 				window.alert('Your horse was saved successfully');
 			}, function (error) {
+				console.log(error);
 				self.error = error.data.message;
 			});
 	};

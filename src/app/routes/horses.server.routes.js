@@ -10,7 +10,8 @@ module.exports = function(app) {
 
 	app.route('/api/horses/:horseName')
 		.get(horses.read)
-		.post(horses.delete);
+		.put(horses.update)
+		.delete(horses.delete);
 
 	app.param('horseName', horses.horseByName);
 };

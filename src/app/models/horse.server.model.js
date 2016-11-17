@@ -6,20 +6,33 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var horseSchema = new Schema({
-	name: {
-		type: String,
-		trim: true,
-		unique: true,
-		required: 'Username is required'
-	},
 	showName: {
 		type: String,
 		trim: true,
 		unique: true,
-		required: 'Username is required'
+		required: 'Show name is a required field'
 	},
 	description: {
 		type: String
+	},
+	birthDate: {
+		type: Date,
+		required: 'Birth date is a required field'
+	},
+	sex: {
+		type: String,
+		validate: {
+			validator: function(sex) {
+				//Check for male or female
+				return sex == 'male' || sex == 'female';
+			}, 
+			msg: 'Sex must be either "male" or "female"'
+		},
+		require: 'Sex is a required field'
+	},
+	fixed: {
+		type: Boolean,
+		required: 'Fixed is a required field.'
 	},
 	images: [String]
 });
