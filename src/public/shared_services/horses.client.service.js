@@ -1,4 +1,6 @@
-angular.module('admin_horses').factory('HorseApi', ['$resource', function ($resource) {
+'use strict';
+
+angular.module('shared_services').factory('HorseApi', ['$resource', function ($resource) {
 	return $resource('api/horses/:horseName', 
 		{
 			horseName: '@param_showName'

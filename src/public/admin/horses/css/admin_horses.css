@@ -1,3 +1,7 @@
+@import url("add_horse.css");
+@import url("edit_horses.css");
+@import url("edit_horse.css");
+
 .adminHorseMenu {
 	font-family: serif;
 	margin: auto;

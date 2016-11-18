@@ -1,0 +1,68 @@
+.filter {
+	height: 30px;
+	margin: 10px;
+	position: relative;
+	display: block;
+	width: 150px;
+}
+
+.filter input {
+	display: none;
+}
+
+.pressButton {
+	background-color: #cc6060;
+	bottom: 0;
+	cursor: pointer;
+	left: 0;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	position: absolute;
+	right: 0;
+	text-align: center;
+	top: 0;
+	user-select: none;
+	-webkit-user-select: none;        
+}
+
+
+input:checked + .pressButton {
+	box-shadow: 0px 0px 15px -4px rgba(255,255,255,1);
+	-moz-box-shadow: 0px 0px 15px -4px rgba(255,255,255,1);
+	filter: brightness(120%);
+	-webkit-box-shadow: 0px 0px 15px -4px rgba(255,255,255,1);
+}
+
+input:focused + .pressButton {
+
+}
+
+.controlsContainer {
+	float: left;
+	margin: 10px;
+	text-align: right;
+}
+
+.horsesListContainer {
+	color: black;
+	margin: auto;
+	width: 1400px;	
+}
+
+.horseEntry {
+	background-color: green;
+	box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.75);
+	display: inline-block;
+	height: 300px;
+	margin: 10px;
+	-moz-box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.75);
+	-moz-transition: all .2s ease-in-out;
+	transition: all .5 ease-in-out;
+	-webkit-box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.75);
+	-webkit-transition: all .2s ease-in-out;
+	width: 400px;
+}
+
+.horseEntry:hover {
+	transform: scale(1.1);
+}

@@ -1,10 +1,8 @@
 <section class="editHorseForm" ng-controller="AdminHorseController as horses" ng-init="horses.find()">
 	<div class="horsesTable">
-		<ul>
-			<li ng-repeat="horse in horses.list">
-				<a href="/admin/horses/{{horse.showName}}" ng-bind="horse.showName"></a> <br>
-			</li>
-		</ul>
+		<div class="horseEntry" ng-repeat="horse in horses.list">
+			<a href="/admin/horses/{{horse.showName}}" ng-bind="horse.showName"></a> <br>
+		</div>
 	<div ng-hide="!horses.list || horses.list.length">
 		No horses, yet. 
 	</div>

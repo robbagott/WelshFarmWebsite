@@ -1,6 +1,6 @@
 "use strict";
 
-var adminModule = angular.module('admin', ['ngRoute', 'ngResource', 'login', 'admin_horses']);
+var adminModule = angular.module('admin', ['ngRoute', 'ngResource', 'shared_services', 'login', 'admin_horses']);
 
 adminModule
 	.config(['$locationProvider', function($locationProvider) {

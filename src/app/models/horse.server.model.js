@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 
-//Schema is a constructor, hence capitalization. A Schema defines the structure of stored data in a specific collection
+// Schema is a constructor, hence capitalization. A Schema defines the structure of stored data in a specific collection
 var Schema = mongoose.Schema;
 
 var horseSchema = new Schema({
@@ -37,6 +37,6 @@ var horseSchema = new Schema({
 	images: [String]
 });
 
-//Now, create a Model using the schema. A Model allows us to create Documents (Instances of the Model) and define methods (instance and static) for retrieving, saving, and manipulating Documents
-//A Document of Model User can now be created with new mongoose.model('User')
+// Now, create a Model using the schema. A Model allows us to create Documents (Instances of the Model) and define methods (instance and static) for retrieving, saving, and manipulating Documents
+// A Document of Model User can now be created with new mongoose.model('User')
 var Horse = mongoose.model('Horse', horseSchema);

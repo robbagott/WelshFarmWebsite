@@ -1,5 +1,25 @@
-<section ng-controller=HorsesController>
-	<div>
-		Horses View
+<section ng-controller="HorsesController as horses" ng-init="horses.find()">
+	<div class="controlsContainer">
+		<label class="filter">
+			<input type="checkbox" checked />
+			<div class="pressButton">Young Stock</div>
+		</label>
+		<label class="filter">
+			<input type="checkbox" checked />
+			<div class="pressButton">Stallions</div>
+		</label>
+		<label class="filter">
+			<input type="checkbox" checked />
+			<div class="pressButton">Mares</div>
+		</label>
+		<label class="filter">
+			<input type="checkbox" checked />
+			<div class="pressButton">Geldings</div>
+		</label>
+	</div>
+	<div class="horsesListContainer">
+		<div class="horseEntry" ng-repeat="horse in horses.list">
+			{{horse.showName}}
+		</div>
 	</div>
 </section>

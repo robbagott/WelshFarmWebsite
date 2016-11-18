@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('admin_horses').controller('AdminHorseController', ['$routeParams', '$location', 'HorseApi', function ($routeParams, $location, HorseApi) {
+angular.module('admin_horses').controller('AdminHorseController', ['$routeParams', 'HorseApi', function ($routeParams, HorseApi) {
 	var self = this;
 
 	self.create = function () {
