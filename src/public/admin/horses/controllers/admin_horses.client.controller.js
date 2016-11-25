@@ -4,6 +4,9 @@ angular.module('admin_horses').controller('AdminHorseController', ['$routeParams
 	var self = this;
 
 	self.create = function () {
+		if (!self.gelded) {
+			self.gelded = false;
+		}
 		var horseApi = new HorseApi({
 			showName: self.showName,
 			birthDate: self.birthDate,
@@ -26,7 +29,30 @@ angular.module('admin_horses').controller('AdminHorseController', ['$routeParams
 
 	self.findOne = function () {
 		self.horse = HorseApi.get({
-			name: $routeParams.horseName
+			horseName: $routeParams.horseName
 		});
+	};
+
+	self.update = function () {
+		self.horse.param_showName = self.horse.showName;
+		self.horse.$update(function () {
+			window.alert('Your horse was updated successfully');
+		}, function (err) {
+			self.error = err.data.message;
+		});
+	};
+
+	self.delete = function (horse) {
+		if (horse) {
+			horse.param_showName = horse.showName;
+			horse.$remove(function (err) {
+				for (var i in self.list) {
+					if (self.list[i] === horse) {
+						self.list.splice(i, 1);
+					}
+				}
+
+			});
+		}
 	};
 }]);

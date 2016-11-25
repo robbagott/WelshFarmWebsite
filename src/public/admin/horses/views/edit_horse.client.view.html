@@ -1,4 +1,34 @@
-<section ng-controller="adminHorseController">
-	<div>
-	</div>
+<section class="editHorseForm" ng-controller="AdminHorseController as horses" ng-init="horses.findOne()">
+	<form ng-submit="horses.update()">
+		<span class="formItem" >Show Name</span> <br>
+		<input type="text" class="nameInputBox" ng-model="horses.horse.showName"/> <br>
+
+		<span class="formItem" >Birth Date</span> <br>
+		<input type="text" class="nameInputBox" ng-model="horses.horse.birthDate"/> <br>
+
+		<span class="formItem" >Sex</span> <br>
+		<label class="formItem">
+			<input type="radio" value="male" ng-model="horses.horse.sex" checked/>
+			Male
+		</label>
+		<label>
+			<input type="radio" value="female" ng-model="horses.horse.sex"/>
+			female
+		</label class="formItem"> <br>
+		<label class="formItem">
+			<input type="checkbox" ng-model="horses.horse.gelded"/> Gelded
+		</label> <br>
+
+		<span class="formItem">Description</span> <br>
+		<textarea class="descriptionInputBox" ng-model="horses.horse.description"></textarea> <br>
+
+		<span class="formItem">Horse Pictures</span> <br>
+		<input type="file" class="nameInputBox" accept=".jpg, .png, .gif, .jpeg, audio/*" /> <br>
+		<input type="submit" class="formItem" /> <br> 
+
+		<div class="formError" ng-show="horses.horse.error">
+			<strong ng-bind="horse.error"></strong>
+		</div>
+	</form>
+	<div class="adminMenuItem"><a href="/admin/horses">Back to Menu</a></div>
 </section>

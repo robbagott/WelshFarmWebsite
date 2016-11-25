@@ -10,5 +10,8 @@ angular.module('admin_horses').config(['$routeProvider', function ($routeProvide
 		})
 		.when('/admin/edit_horses', {
 			templateUrl: '/admin/horses/views/edit_horses.client.view.html'
+		})
+		.when('/admin/horses/:horseName', {
+			templateUrl: '/admin/horses/views/edit_horse.client.view.html'
 		}); 
 }]);
