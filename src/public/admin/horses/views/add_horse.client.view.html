@@ -13,7 +13,7 @@
 		</label>
 		<label>
 			<input type="radio" value="female" ng-model="horses.sex"/>
-			female
+			Female
 		</label class="formItem"> <br>
 		<label class="formItem">
 			<input type="checkbox" ng-model="horses.gelded"/> Gelded
@@ -23,9 +23,14 @@
 		<textarea class="descriptionInputBox" ng-model="horses.description"></textarea> <br>
 
 		<span class="formItem">Horse Pictures</span> <br>
-		<input type="file" class="nameInputBox" accept=".jpg, .png, .gif, .jpeg, audio/*" /> <br>
+		<div class="formItem"> 
+			<input type="file" multiple id="imageInput" class="nameInputBox" accept="image/*" />
+			<input type="button" value="Upload Images" ng-click="horses.addDataURLs()" /> <br>
+			<span class="imageMessage" ng-bind="horses.imageMessage"></span> <br>
+			<span class="formError" ng-bind="horses.imageError"></span> <br>
+		</div>
 
-		<input type="submit" class="formItem" /> <br> 
+		<input type="submit" value="Save Horse" class="formItem" /> <br> 
 
 		<div class="formError" ng-show="horses.error">
 			<strong ng-bind="horses.error"></strong>

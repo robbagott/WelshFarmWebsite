@@ -22,11 +22,14 @@ module.exports = function() {
 	/* Some forms send x-form-urlencoded formatted bodies in their post requests.
 	** body-parser attempts to parse the body as such and gives up if it cannot */
 	app.use(bodyParser.urlencoded({
-		extended: true
+		extended: true,
+		limit: '50mb'
 	}));
 
 	//Parse the request body html into a json object. Added to req object as req.body
-	app.use(bodyParser.json());
+	app.use(bodyParser.json({
+		limit: '50mb'
+	}));
 
 	/* Allows for the use of PUT and DELETE http methods. 
 	** These are passed through the _method post parameter 

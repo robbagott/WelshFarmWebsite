@@ -4,7 +4,8 @@ angular.module('horses').controller('HorsesController', ['$routeParams', 'HorseA
 	var self = this;
 
 	self.find = function () {
-		self.list = HorseApi.query();
-		console.log(self.list);
+		self.list = HorseApi.query(function () {
+			console.log(self.list);
+		});
 	};
 }]);

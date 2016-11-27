@@ -70,8 +70,7 @@ exports.read = function (req, res) {
 // Tries to update a horse. If there is an error, it is returned in the response. Assumes that req.horse is a horse that has been retrieved by middleware.
 exports.update = function (req, res) {
 	var horse = req.horse;
-
-	horse.name = req.body.name;
+	
 	horse.showName = req.body.showName;
 	horse.description = req.body.description;
 

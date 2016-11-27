@@ -1,25 +1,38 @@
 <section ng-controller="HorsesController as horses" ng-init="horses.find()">
 <div class="controlsContainer">
-	<label class="filter">
-		<input type="checkbox" checked />
+	<label for="radio_all" class="filter">
+		<input name="horse_type" id="radio_all" type="radio" value="all" checked />
+		<div class="pressButton">ALL</div>
+	</label>
+	<label for="radio_young_stock" class="filter">
+		<input name="horse_type" id="radio_young_stock" type="radio" value="young stock" />
 		<div class="pressButton">YOUNG STOCK</div>
 	</label>
-	<label class="filter">
-		<input type="checkbox" checked />
+	<label for="radio_stallions" class="filter">
+		<input name="horse_type" id="radio_stallions" type="radio" value="stallions" />
 		<div class="pressButton">STALLIONS</div>
 	</label>
-	<label class="filter">
-		<input type="checkbox" checked />
+	<label for="radio_mares" class="filter">
+		<input name="horse_type" id="radio_mares" type="radio" value="mares" />
 		<div class="pressButton">MARES</div>
 	</label>
-	<label class="filter">
-		<input type="checkbox" checked />
+	<label for="radio_geldings" class="filter">
+		<input name="horse_type" id="radio_geldings" type="radio" value="geldings"/>
 		<div class="pressButton">GELDINGS</div>
 	</label>
 </div>
 <div class="horsesListContainer">
 	<div class="horseEntry" ng-repeat="horse in horses.list">
-		{{horse.showName}}
+		<div class="horseImageWrapper">
+			<img class="horseImage" ng-src="/images/{{horse.showName}}/{{horse.images[0]}}" />
+		</div>
+		<div class="horseContent" >
+			<b>Show Name:</b> {{horse.showName}} <br>
+			<b>Sex:</b> {{horse.sex}} <br>
+			<b>Birth Date:</b> {{horse.birthDate}} <br>
+			<b>Description:</b> {{horse.description}} <br>
+			</p>
+		</div>
 	</div>
 </div>
 </section>

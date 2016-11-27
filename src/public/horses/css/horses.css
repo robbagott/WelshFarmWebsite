@@ -1,5 +1,5 @@
 .controlsContainer {
-	width: 800px;
+	width: 1200px;
 	height: 100px;
 	border-color: grey;
 	margin: auto;
@@ -59,14 +59,15 @@ input:checked + .pressButton {
 .horsesListContainer {
 	color: black;
 	margin: auto;
-	width: 1400px;	
+	width: 1200px;	
 }
 
 .horseEntry {
-	background-color: green;
+	background-color: white;
 	box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.75);
 	display: block;
-	height: 300px;
+	height: 400px;
+	font-family: 'Work Sans';
 	margin:  20px auto;
 	-moz-box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.75);
 	-moz-transition: all .2s ease-in-out;
@@ -76,5 +77,13 @@ input:checked + .pressButton {
 }
 
 .horseEntry:hover {
-	transform: scale(1.1);
+	transform: scale(1.05);
+}
+
+.horseImage {
+	float: left;
+	height: 400px;
+}
+
+.horseContent {
 }
