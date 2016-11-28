@@ -1,5 +1,5 @@
 .controlsContainer {
-	width: 1200px;
+	width: 850px;
 	height: 100px;
 	border-color: grey;
 	margin: auto;
@@ -58,19 +58,23 @@ input:checked + .pressButton {
 
 .horsesListContainer {
 	color: black;
-	margin: auto;
-	width: 1200px;	
+	margin: 0 10px;
+	max-width: 100%;
 }
 
 .horseEntry {
 	background-color: white;
 	box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.75);
 	display: block;
-	height: 400px;
+	min-height: 200px;
+	max-height: 400px;
+	min-width:  600px;
+	max-width: 1200px;
 	font-family: 'Work Sans';
-	margin:  20px auto;
+	margin: 20px auto;
 	-moz-box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.75);
 	-moz-transition: all .2s ease-in-out;
+	overflow: hidden;
 	transition: all .5 ease-in-out;
 	-webkit-box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.75);
 	-webkit-transition: all .2s ease-in-out;
@@ -80,10 +84,28 @@ input:checked + .pressButton {
 	transform: scale(1.05);
 }
 
+.horseImageWrapper {
+	display: inline-block;
+	overflow: hidden;
+	width: 500px;
+}
+
 .horseImage {
-	float: left;
 	height: 400px;
+	position: relative;
 }
 
 .horseContent {
+	color: black;
+	display: inline-block;
+	height: 400px;
+	position: relative;
+	vertical-align: top;
+	width: calc(100% - 500px);
+}
+
+.horseContentTable {
+	border: 2px solid #cccccc;
+	margin: 5px;
+	height: calc(100% - 14px);
 }

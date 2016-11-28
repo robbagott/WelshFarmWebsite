@@ -22,17 +22,20 @@
 	</label>
 </div>
 <div class="horsesListContainer">
-	<div class="horseEntry" ng-repeat="horse in horses.list">
-		<div class="horseImageWrapper">
-			<img class="horseImage" ng-src="/images/{{horse.showName}}/{{horse.images[0]}}" />
-		</div>
-		<div class="horseContent" >
-			<b>Show Name:</b> {{horse.showName}} <br>
-			<b>Sex:</b> {{horse.sex}} <br>
-			<b>Birth Date:</b> {{horse.birthDate}} <br>
-			<b>Description:</b> {{horse.description}} <br>
-			</p>
-		</div>
-	</div>
+	<a class="horseEntry" href="/horses/{{horse.showName}}" ng-repeat="horse in horses.list">
+			<div class="horseImageWrapper">
+				<img class="horseImage" ng-src="/images/{{horse.showName}}/{{horse.images[0]}}" />
+			<!-- divs pushed together here so that no whitespace is added between them, causing the second to be pushed down. -->
+			</div><div class="horseContent" > 
+				<div class="horseContentTable">
+					At a Glance: <br>
+					<b>Show Name:</b> {{horse.showName}} <br>
+					<b>Sex:</b> {{horse.sex}} <br>
+					<b>Birth Date:</b> {{horse.birthDate}} <br>
+					<b>Description:</b> {{horse.description}} <br>
+					</p>
+				</div>
+			</div>
+	</a>
 </div>
 </section>
