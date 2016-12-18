@@ -5,7 +5,7 @@
 		<div class="pressButton">ALL</div>
 	</label>
 	<label for="radio_young_stock" class="filter">
-		<input name="horse_type" id="radio_young_stock" type="radio" value="young stock" />
+		<input name="horse_type" id="radio_young_stock" type="radio" value="young_stock" />
 		<div class="pressButton">YOUNG STOCK</div>
 	</label>
 	<label for="radio_stallions" class="filter">
@@ -20,6 +20,10 @@
 		<input name="horse_type" id="radio_geldings" type="radio" value="geldings"/>
 		<div class="pressButton">GELDINGS</div>
 	</label>
+	<label for="radio_for_sale" class="filter">
+		<input name="horse_type" id="radio_for_sale" type="radio" value="for_sale"/>
+		<div class="pressButton">FOR SALE</div>
+	</label>
 </div>
 <div class="horsesListContainer">
 	<a class="horseEntry" href="/horses/{{horse.showName}}" ng-repeat="horse in horses.list">
@@ -28,11 +32,15 @@
 			<!-- divs pushed together here so that no whitespace is added between them, causing the second to be pushed down. -->
 			</div><div class="horseContent" > 
 				<div class="horseContentTable">
-					At a Glance: <br>
 					<b>Show Name:</b> {{horse.showName}} <br>
-					<b>Sex:</b> {{horse.sex}} <br>
+					<b>Gender:</b> {{horse.sex}} <br>
 					<b>Birth Date:</b> {{horse.birthDate}} <br>
 					<b>Description:</b> {{horse.description}} <br>
+					<b>Color:</b> {{horse.color}} <br>
+					<b>Grey:</b> {{horse.grey}} <br>
+					<b>Sire:</b> {{horse.sire}} <br>
+					<b>Dam:</b> {{horse.dam}} <br>
+					<b>Height:</b> {{horse.height}} <br>
 					</p>
 				</div>
 			</div>

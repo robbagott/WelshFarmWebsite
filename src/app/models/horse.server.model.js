@@ -12,6 +12,11 @@ var horseSchema = new Schema({
 		unique: true,
 		required: 'Show name is a required field'
 	},
+	farmName: {
+		type: String,
+		trim: true,
+		unique: true
+	},
 	description: {
 		type: String
 	},
@@ -34,7 +39,25 @@ var horseSchema = new Schema({
 		type: Boolean,
 		required: 'Gelded is a required field.'
 	},
-	images: [String]
+	images: [String],
+	color: {
+		type: String,
+		required: 'Coloration is a required field.'
+	},
+	grey: {
+		type: Boolean,
+		required: 'Grey is a required field.'
+	},
+	sire: {
+		type: Object
+	},
+	dam: {
+		type: Object
+	},
+	height: {
+		type: Number,
+		required: 'Height is a required field.'
+	}
 });
 
 // Now, create a Model using the schema. A Model allows us to create Documents (Instances of the Model) and define methods (instance and static) for retrieving, saving, and manipulating Documents
