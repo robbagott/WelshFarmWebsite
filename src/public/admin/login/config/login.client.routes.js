@@ -1,10 +1,20 @@
-"use strict";
+(function () {
+	'use strict';
 
-angular.module('login').config(['$routeProvider', function ($routeProvider) {
-	$routeProvider.when('/admin/login', {
-		templateUrl: '/admin/login/views/login.client.view.html'
-	})
-	.otherwise({
-		redirectTo: '/admin/login'
-	});
-}]);
+	angular
+		.module('login')
+		.config(configureAdminLoginRoute);
+
+	configureAdminLoginRoute.$inject = ['$routeProvider'];
+
+	function configureAdminLoginRoute($routeProvider) {
+		console.log('Configured login routes');
+		$routeProvider
+			.when('/admin/login', {
+				templateUrl: '/admin/login/views/login.client.view.html'
+			})
+			.otherwise({
+				redirectTo: '/admin/login'
+			});
+	}
+})();

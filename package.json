@@ -17,5 +17,10 @@
     "mongoose": "^4.6.6",
     "morgan": "^1.7.0",
     "passport": "^0.3.2"
+  },
+  "devDependencies": {
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "2.3.2"
   }
 }

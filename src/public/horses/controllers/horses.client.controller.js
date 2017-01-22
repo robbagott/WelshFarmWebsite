@@ -3,7 +3,7 @@
 
 	angular
 		.module('horses')
-			.controller('HorsesController', HorsesController);
+		.controller('HorsesController', HorsesController);
 
 	HorsesController.$inject = ['$routeParams', '$q', 'HorseApi'];
 

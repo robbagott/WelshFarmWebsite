@@ -1,3 +1,12 @@
-angular.module('home').controller('HomeController', ['$scope', function($scope) {
-	$scope.name = 'home';
-}]);
+(function () {
+	'use strict';
+
+	angular
+		.module('home')
+		.controller('HomeController', HomeController);
+
+	HomeController.$inject = [];
+
+	function HomeController() {
+	}
+})();

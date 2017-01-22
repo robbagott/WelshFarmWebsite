@@ -1,12 +1,13 @@
-var mainApplicationModuleName = 'main';
+(function () {
+	'use strict';
 
-var mainApplicationModule = angular.module(mainApplicationModuleName, ['ngRoute', 'ngResource', 'shared_services', 'home', 'horses']);
+	angular
+		.module('main', ['ngRoute', 'ngResource', 'shared_services', 'home', 'horses'])
+		.config(['$locationProvider', function($locationProvider) {
+			$locationProvider.html5Mode(true);
+		}]);
 
-mainApplicationModule
-	.config(['$locationProvider', function($locationProvider) {
-		$locationProvider.html5Mode(true);
-	}]);
-
-angular.element(document).ready(function() {
-	angular.bootstrap(document, [mainApplicationModuleName]);
-});
+	angular.element(document).ready(function() {
+		angular.bootstrap(document, ['main']);
+	});
+})();

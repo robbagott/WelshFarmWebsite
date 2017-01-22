@@ -1,3 +1,5 @@
-"use strict";
+(function () {
+	'use strict';
 
-angular.module("admin_horses", ['shared_services']);
+	angular.module('admin_horses', ['shared_services']);
+})();

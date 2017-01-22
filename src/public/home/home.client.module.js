@@ -1,1 +1,5 @@
-angular.module('home', []);
+(function() {
+	'use strict';
+
+	angular.module('home', []);
+})();
