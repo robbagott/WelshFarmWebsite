@@ -1,3 +1,7 @@
+/*
+	Controls styles.
+*/
+
 .controlsContainer {
 	width: 1000px;
 	height: 100px;
@@ -35,7 +39,7 @@
 	cursor: pointer;
 	font-family: 'Source Sans Pro';
 	left: 0;
-	line-height: 2;
+	line-height: 2.2;
 	-moz-transition: background-color 100ms ease;
 	-moz-user-select: none;
     -ms-transition: background-color 100ms ease;
@@ -43,7 +47,6 @@
     -o-transition: background-color 100ms ease;
 	position: absolute;
 	right: 0;
-	text-align: center;
 	top: 0;
     transition: background-color 100ms ease;
 	user-select: none;
@@ -56,23 +59,28 @@ input:checked + .pressButton {
 	background-color: #cc6060;
 }
 
+
+/*
+	Horse Entries Styles.
+*/
+
 .horsesListContainer {
 	color: black;
-	margin: 0 10px;
-	max-width: 100%;
+	margin: 0 auto;
+	max-width: 1000px;
 	text-align: center;
 }
 
 .horseEntry {
-	box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.75);
 	display: inline-block;
 	font-family: 'Work Sans';
-	margin: 20px auto;
-	-moz-box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.75);
-	-moz-transition: all .2s ease-in-out;
+	margin: 20px 20px;
 	overflow: hidden;
+	text-align: left;
 	transition: all .5 ease-in-out;
-	-webkit-box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.75);
+	vertical-align: top;
+	width: 300px;
+	-moz-transition: all .2s ease-in-out;
 	-webkit-transition: all .2s ease-in-out;
 }
 
@@ -86,21 +94,33 @@ input:checked + .pressButton {
 }
 
 .horseImage {
-	height: 400px;
 	position: relative;
+	width: 300px;
 }
 
-.horseContent {
-	color: black;
-	display: inline-block;
-	height: 400px;
-	position: relative;
-	vertical-align: top;
-	width: calc(100% - 500px);
+.horseNameContainer {
+	padding: 5px;
+	text-align: center;
 }
 
-.horseContentTable {
-	border: 2px solid #cccccc;
-	margin: 5px;
-	height: calc(100% - 14px);
+.horseShowName {
+	color: #cc6060;
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.horseDescription {
+	font-size: 12px;
+	font-weight: 400;
+	padding: 5px;
+}
+
+.horseFields {
+	float: left;
+	font-size: 12px;
+	padding: 5px;
+}
+
+.horseField { 
+	color: #cc6060;
 }

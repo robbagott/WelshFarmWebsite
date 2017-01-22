@@ -1,35 +1,59 @@
-<section ng-controller="HorsesController as horses" ng-init="horses.find()">
+<section ng-controller="HorsesController as horses" ng-init="horses.init()">
 <div class="controlsContainer">
 	<label for="radio_all" class="filter">
-		<input name="horse_type" id="radio_all" type="radio" value="all" checked />
+		<input name="horse_type" id="radio_all" type="radio" value="all"  ng-model="horses.filter" ng-click="horses.refreshList()" />
 		<div class="pressButton">ALL</div>
 	</label>
 	<label for="radio_young_stock" class="filter">
-		<input name="horse_type" id="radio_young_stock" type="radio" value="young_stock" />
+		<input name="horse_type" id="radio_young_stock" type="radio" value="young_stock" ng-model="horses.filter" ng-click="horses.refreshList()" />
 		<div class="pressButton">YOUNG STOCK</div>
 	</label>
 	<label for="radio_stallions" class="filter">
-		<input name="horse_type" id="radio_stallions" type="radio" value="stallions" />
+		<input name="horse_type" id="radio_stallions" type="radio" value="stallions" ng-model="horses.filter" ng-click="horses.refreshList()"  />
 		<div class="pressButton">STALLIONS</div>
 	</label>
 	<label for="radio_mares" class="filter">
-		<input name="horse_type" id="radio_mares" type="radio" value="mares" />
+		<input name="horse_type" id="radio_mares" type="radio" value="mares" ng-model="horses.filter" ng-click="horses.refreshList()"  />
 		<div class="pressButton">MARES</div>
 	</label>
 	<label for="radio_geldings" class="filter">
-		<input name="horse_type" id="radio_geldings" type="radio" value="geldings"/>
+		<input name="horse_type" id="radio_geldings" type="radio" value="geldings" ng-model="horses.filter" ng-click="horses.refreshList()" />
 		<div class="pressButton">GELDINGS</div>
 	</label>
 	<label for="radio_for_sale" class="filter">
-		<input name="horse_type" id="radio_for_sale" type="radio" value="for_sale"/>
+		<input name="horse_type" id="radio_for_sale" type="radio" value="for_sale" ng-model="horses.filter" ng-click="horses.refreshList()"  />
 		<div class="pressButton">FOR SALE</div>
 	</label>
 </div>
 <div class="horsesListContainer">
-	<a class="horseEntry" href="/horses/{{horse.showName}}" ng-repeat="horse in horses.list">
-			<div class="horseImageWrapper">
-				<img class="horseImage" ng-src="/images/{{horse.showName}}/{{horse.images[0]}}" />
-			</div>
+	<a class="horseEntry" href="/horses/{{horse.showName}}" ng-repeat="horse in horses.activeList">
+		<div class="horseNameContainer">
+			<span class="horseShowName">{{horse.showName}}</span>
+		</div>
+		<div class="horseImageWrapper">
+			<img class="horseImage" ng-src="/images/{{horse.showName}}/{{horse.images[0]}}" />
+		</div>
+		<div class="horseFields">
+			<span class="horseField">Gender</span>
+			<span class="horseValue">{{horse.sex}}</span>
+			<br>
+
+			<span class="horseField">Age</span>
+			<span class="horseValue">{{horse.age}}</span>
+			<br>
+
+			<span class="horseField">Height</span>
+			<span class="horseValue">{{horse.height}}</span>
+			<br>
+
+			<span class="horseField">Color</span>
+			<span class="horseValue">{{horse.color}}</span>
+			<br>
+		</div>
+		<div class="horseDescriptionContainer">
+			<div class="horseDescriptionTitle"></div>
+			<div class="horseDescription">{{horse.description}}</div>
+		</div>
 	</a>
 </div>
 </section>
