@@ -1,111 +1,151 @@
-'use strict';
+(function () {
+	'use strict';
 
-angular.module('admin_horses').controller('AdminHorseController', ['$routeParams', 'HorseApi', '$scope', function ($routeParams, HorseApi, $scope) {
-	var self = this;
+	angular
+		.module('admin_horses')
+		.controller('AdminHorseController', adminHorseController);
 
-	self.imageFiles = [];
-	self.imageMessage = "";
+	adminHorseController.$inject = ['$routeParams', 'HorseApi', '$scope'];
 
-	self.create = function () {
+	function adminHorseController($routeParams, HorseApi, $scope) {
+		var self = this;
 
-		// Get the image file names if any
-		var inputElem = document.getElementById("imageInput");
-		var fileNames = self.getFileNames(inputElem);
-
-		if (!self.gelded) {
-			self.gelded = false;
+		// Fields
+		self.horse = {
+			birthDate: undefined,
+			color: undefined,
+			dam: undefined,
+			description: undefined,
+			farmName: undefined,
+			gelded: undefined,
+			grey: undefined,
+			height: undefined,
+			imageFiles: [],
+			sex: undefined,
+			showName: undefined,
+			sire: undefined,
 		}
-		var horseApi = new HorseApi({
-			showName: self.showName,
-			birthDate: self.birthDate,
-			sex: self.sex,
-			description: self.description,
-			gelded: self.gelded,
-			images: fileNames,
-			imageFiles: self.imageFiles
-		});
+		self.imageMessage = "";
+		self.list = [];
 
-		horseApi.$save(function (response) {
-				window.alert('Your horse was saved successfully');
-			}, function (error) {
-				console.log(error);
-				self.error = error.data.message;
+		// Methods
+		self.addDataURLs = addDataURLs;
+		self.create = create;
+		self.delete = deleteHorse;
+		self.find = find;
+		self.findOne = findOne;
+		self.getFileNames = getFileNames;
+		self.update = update;
+
+		function create() {
+
+			// Get the image file names if any
+			var inputElem = document.getElementById("imageInput");
+			var fileNames = self.getFileNames(inputElem);
+
+			if (!self.gelded) {
+				self.gelded = false;
+			}
+			var horseApi = new HorseApi({
+				birthDate: self.horse.birthDate,
+				color: self.horse.color,
+				dam: self.horse.dam,
+				description: self.horse.description,
+				farmName: self.horse.farmName,
+				gelded: self.horse.gelded,
+				grey: self.horse.grey,
+				height: self.horse.height,
+				imageFiles: self.horse.imageFiles,
+				images: fileNames,
+				sex: self.horse.sex,
+				showName: self.horse.showName,
+				sire: self.horse.sire
 			});
-	};
 
-	self.find = function () {
-		self.list = HorseApi.query();
-	};
+			horseApi.$save(function (response) {
+					window.alert('Your horse was saved successfully');
+				}, function (error) {
+					console.log(error);
+					self.error = error.data.message;
+				});
+		}
 
-	self.findOne = function () {
-		self.horse = HorseApi.get({
-			horseName: $routeParams.horseName
-		});
-	};
+		function find() {
+			self.list = HorseApi.query();
+		}
 
-	self.update = function () {
-		self.horse.param_showName = self.horse.showName;
-		self.horse.$update(function () {
-			window.alert('Your horse was updated successfully');
-		}, function (err) {
-			self.error = err.data.message;
-		});
-	};
+		function findOne() {
+			console.log('finding one');
+			self.horse = HorseApi.get({
+				horseName: $routeParams.horseName
+			});
+		}
 
-	self.delete = function (horse) {
-		if (horse) {
-			horse.param_showName = horse.showName;
-			horse.$remove(function (err) {
-				for (var i in self.list) {
-					if (self.list[i] === horse) {
-						self.list.splice(i, 1);
+		function update() {
+			self.horse.param_showName = self.horse.showName;
+			console.log(self.horse.farmName);
+			self.horse.$update(function () {
+				window.alert('Your horse was updated successfully');
+			}, function (err) {
+				self.error = err.data.message;
+			});
+		}
+
+		function deleteHorse(horse) {
+			if (horse) {
+				horse.param_showName = horse.showName;
+				horse.$remove(function (err) {
+					for (var i in self.list) {
+						if (self.list[i] === horse) {
+							self.list.splice(i, 1);
+						}
+					}
+
+				});
+			}
+		}
+
+		function getFileNames(elem) {
+			console.log(elem);
+			var files = elem.files;
+			var fileNames = [];
+
+			for (var i = 0; i < elem.files.length; i++) {
+				fileNames.push(files[i].name);
+			}
+			return fileNames;
+		}
+
+		function addDataURLs() {
+			var inputElem = document.getElementById("imageInput");
+			var imageFiles = inputElem.files;
+
+			for (var i = 0; i < imageFiles.length; i++) {
+
+				//Check if the image was already added
+				var alreadyAdded = false;
+				for (var j = 0; j < self.horse.imageFiles.length; j++) {
+					if (imageFiles[i].name === self.horse.imageFiles[j].fileName) {
+						self.imageError = imageFiles[i].name + " already added\n";
+						alreadyAdded = true;
 					}
 				}
 
-			});
-		}
-	};
+				if (!alreadyAdded) {
+					(function(file) {
+						var reader = new FileReader();
+						reader.onload = function () {
+							self.horse.imageFiles.push({fileName: file.name, dataURL: reader.result});
+							self.imageMessage += file.name + " added\n";
+							self.imageError = "";
+							$scope.$apply();
 
-	self.getFileNames = function (elem) {
-		console.log(elem);
-		var files = elem.files;
-		var fileNames = [];
-
-		for (var i = 0; i < elem.files.length; i++) {
-			fileNames.push(files[i].name);
-		}
-		return fileNames;
-	};
-
-	self.addDataURLs = function () {
-		var inputElem = document.getElementById("imageInput");
-		var imageFiles = inputElem.files;
-
-		for (var i = 0; i < imageFiles.length; i++) {
-
-			//Check if the image was already added
-			var alreadyAdded = false;
-			for (var j = 0; j < self.imageFiles.length; j++) {
-				if (imageFiles[i].name === self.imageFiles[j].fileName) {
-					self.imageError = imageFiles[i].name + " already added\n";
-					alreadyAdded = true;
+							console.log(self.horse.imageFiles);
+						}
+						reader.readAsDataURL(file);
+					})(imageFiles[i]);
 				}
 			}
-
-			if (!alreadyAdded) {
-				(function(file) {
-					var reader = new FileReader();
-					reader.onload = function () {
-						self.imageFiles.push({fileName: file.name, dataURL: reader.result});
-						self.imageMessage += file.name + " added\n";
-						self.imageError = "";
-						$scope.$apply();
-
-						console.log(self.imageFiles);
-					}
-					reader.readAsDataURL(file);
-				})(imageFiles[i]);
-			}
-		}
-	};
-}]);
+		};
+	}
+})();

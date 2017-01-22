@@ -29,20 +29,6 @@
 	<a class="horseEntry" href="/horses/{{horse.showName}}" ng-repeat="horse in horses.list">
 			<div class="horseImageWrapper">
 				<img class="horseImage" ng-src="/images/{{horse.showName}}/{{horse.images[0]}}" />
-			<!-- divs pushed together here so that no whitespace is added between them, causing the second to be pushed down. -->
-			</div><div class="horseContent" > 
-				<div class="horseContentTable">
-					<b>Show Name:</b> {{horse.showName}} <br>
-					<b>Gender:</b> {{horse.sex}} <br>
-					<b>Birth Date:</b> {{horse.birthDate}} <br>
-					<b>Description:</b> {{horse.description}} <br>
-					<b>Color:</b> {{horse.color}} <br>
-					<b>Grey:</b> {{horse.grey}} <br>
-					<b>Sire:</b> {{horse.sire}} <br>
-					<b>Dam:</b> {{horse.dam}} <br>
-					<b>Height:</b> {{horse.height}} <br>
-					</p>
-				</div>
 			</div>
 	</a>
 </div>

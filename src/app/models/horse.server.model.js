@@ -6,24 +6,38 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var horseSchema = new Schema({
-	showName: {
+	birthDate: {
+		type: Date,
+		required: 'Birth date is a required field'
+	},
+	color: {
 		type: String,
-		trim: true,
-		unique: true,
-		required: 'Show name is a required field'
+		required: 'Coloration is a required field.'
+	},
+	dam: {
+		type: Object
+	},
+	description: {
+		type: String
 	},
 	farmName: {
 		type: String,
 		trim: true,
 		unique: true
 	},
-	description: {
-		type: String
+	gelded: {
+		type: Boolean,
+		required: 'Gelded is a required field.'
 	},
-	birthDate: {
-		type: Date,
-		required: 'Birth date is a required field'
+	grey: {
+		type: Boolean,
+		required: 'Grey is a required field.'
 	},
+	height: {
+		type: Number,
+		required: 'Height is a required field.'
+	},
+	images: [String],
 	sex: {
 		type: String,
 		validate: {
@@ -35,28 +49,14 @@ var horseSchema = new Schema({
 		},
 		require: 'Sex is a required field'
 	},
-	gelded: {
-		type: Boolean,
-		required: 'Gelded is a required field.'
-	},
-	images: [String],
-	color: {
+	showName: {
 		type: String,
-		required: 'Coloration is a required field.'
-	},
-	grey: {
-		type: Boolean,
-		required: 'Grey is a required field.'
+		trim: true,
+		unique: true,
+		required: 'Show name is a required field'
 	},
 	sire: {
 		type: Object
-	},
-	dam: {
-		type: Object
-	},
-	height: {
-		type: Number,
-		required: 'Height is a required field.'
 	}
 });
 

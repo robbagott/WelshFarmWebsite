@@ -60,16 +60,12 @@ input:checked + .pressButton {
 	color: black;
 	margin: 0 10px;
 	max-width: 100%;
+	text-align: center;
 }
 
 .horseEntry {
-	background-color: white;
 	box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.75);
-	display: block;
-	min-height: 200px;
-	max-height: 400px;
-	min-width:  600px;
-	max-width: 1200px;
+	display: inline-block;
 	font-family: 'Work Sans';
 	margin: 20px auto;
 	-moz-box-shadow: 0px 0px 12px 1px rgba(0,0,0,0.75);
@@ -87,7 +83,6 @@ input:checked + .pressButton {
 .horseImageWrapper {
 	display: inline-block;
 	overflow: hidden;
-	width: 500px;
 }
 
 .horseImage {
