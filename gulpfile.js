@@ -4,75 +4,104 @@ var cleanCSS = require('gulp-clean-css');
 var plumber = require('gulp-plumber');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
+var vendor = require('gulp-concat-vendor');
 
 // Clean Tasks
 
-gulp.task('clean-dist', function () {
-	return del(['dist']);
+gulp.task('clean-prod', function () {
+	return del(['dist/prod']);
 });
 
-gulp.task('clean-devel', function () {
-	return del(['devel']);
+gulp.task('clean-dev', function () {
+	return del(['dist/dev']);
 });
 
-gulp.task('clean', ['clean-dist', 'clean-devel']);
+gulp.task('clean', ['clean-prod', 'clean-dev']);
 
 // Distribution Tasks
 
-gulp.task('dist-js', function () {
-	return gulp.src('src/**/*.js')
+gulp.task('prod-js', function () {
+	return gulp.src(['src/public/**/*.js'])
 		.pipe(plumber())
 		.pipe(uglify())
-		.pipe(gulp.dest('dist'));
+		.pipe(gulp.dest('dist/prod/public/'));
 });
 
-gulp.task('dist-scss', function () {
+gulp.task('prod-scss', function () {
 	return gulp.src('src/**/*.scss')
 		.pipe(plumber())
 		.pipe(sass().on('error', sass.logError))
 		.pipe(cleanCSS({compatibility: 'ie8'}))
-		.pipe(gulp.dest('dist'));
+		.pipe(gulp.dest('dist/prod/'));
 });
 
-gulp.task('dist-other', function () {
+gulp.task('prod-public-lib', function () {
+	return gulp.src('src/public/lib')
+		.pipe(plumber())
+		.pipe(gulp.dest('dist/prod/public/lib/'));
+});
+
+gulp.task('prod-public', function () {
+	return gulp.src([
+		'src/public/**/*',
+		'!src/public/**/*.js',
+		'!src/public/**/*.scss'])
+		.pipe(plumber())
+		.pipe(gulp.dest('dist/prod/public'));
+});
+
+gulp.task('prod-server', function () {
 	return gulp.src([
 		'src/**/*.ejs',
-		'src/**/*.html',
-		'src/public/lib',
-		'src/**/media/**.*'])
+		'src/**/*.js',
+		'!src/public/**/*'])
 		.pipe(plumber())
-		.pipe(gulp.dest('dist'));
+		.pipe(gulp.dest('dist/prod/'));
 });
 
 // Development Tasks
 
-gulp.task('devel-js', function () {
-	return gulp.src('src/**/*.js')
+gulp.task('dev-js', function () {
+	return gulp.src('src/public/**/*.js')
 		.pipe(plumber())
-		.pipe(gulp.dest('devel'));
+		.pipe(gulp.dest('dist/dev/public/'));
 });
 
-gulp.task('devel-scss', function () {
+gulp.task('dev-scss', function () {
 	return gulp.src('src/**/*.scss')
 		.pipe(plumber())
 		.pipe(sass().on('error', sass.logError))
-		.pipe(gulp.dest('devel'));
+		.pipe(gulp.dest('dist/dev/'));
 });
 
-gulp.task('devel-other', function () {
+gulp.task('dev-public-lib', function () {
+	return gulp.src('src/public/lib')
+		.pipe(plumber())
+		.pipe(gulp.dest('dist/dev/public/lib/'));
+});
+
+gulp.task('dev-public', function () {
+	return gulp.src([
+		'src/public/**/*',
+		'!src/public/**/*.js',
+		'!src/public/**/*.scss'])
+		.pipe(plumber())
+		.pipe(gulp.dest('dist/dev/public'));
+});
+
+gulp.task('dev-server', function () {
 	return gulp.src([
 		'src/**/*.ejs',
-		'src/**/*.html',
-		'src/public/lib',
-		'src/**/media/**.*'])
+		'src/**/*.js',
+		'!src/public/**/*'])
 		.pipe(plumber())
-		.pipe(gulp.dest('devel'));
+		.pipe(gulp.dest('dist/dev/'));
 });
 
 // Task Shortcuts
 
-gulp.task('dist', ['dist-js', 'dist-scss', 'dist-other']);
+gulp.task('prod', ['prod-js', 'prod-scss', 'prod-server', 'prod-public', 'prod-public-lib', 'prod-vendor']);
 
-gulp.task('devel', ['devel-js', 'devel-scss', 'devel-other']);
+gulp.task('dev', ['dev-js', 'dev-scss', 'dev-server', 'dev-public', 'dev-public-lib']);
 
-gulp.task('default', ['dist', 'devel']);
+gulp.task('default', ['prod', 'dev']);
