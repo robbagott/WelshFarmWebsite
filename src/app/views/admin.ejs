@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Faylin Welsh</title>
+		<title>Faylin Welsh Admin Panel</title>
 		<base href="/"></base>
 
 		<!-- some cool fonts -->
 		<link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Pacifico|Source+Sans+Pro" rel="stylesheet">
 
-		<!-- Font Awesome -->
-		<link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css" />
-
-		<link rel="stylesheet" href="/css/app.css" />
-		<link rel="stylesheet" href="/admin/login/css/login.css">
-		<link rel="stylesheet" href="/admin/horses/css/admin_horses.css">
+		<link rel="stylesheet" href="vendor.css" />
+		<link rel="stylesheet" href="all.css" />
 	</head>
 	<body>
 		<div id="topBar">
@@ -23,21 +19,7 @@
 		</div>
 		<section id="content" ng-view></section>
 
-		<script type="text/javascript" src="/lib/angular/angular.js"></script>
-		<script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
-		<script type="text/javascript" src="/lib/angular-resource/angular-resource.js"></script>
-
-		<script type="text/javascript" src="/shared_services/shared_services.client.module.js"></script>
-		<script type="text/javascript" src="/shared_services/horses.client.service.js"></script>
-
-		<script type="text/javascript" src="/admin/login/login.client.module.js"></script>
-		<script type="text/javascript" src="/admin/login/controllers/login.client.controller.js"></script>
-		<script type="text/javascript" src="/admin/login/config/login.client.routes.js"></script>
-
-		<script type="text/javascript" src="/admin/horses/admin_horses.client.module.js"></script>
-		<script type="text/javascript" src="/admin/horses/controllers/admin_horses.client.controller.js"></script>
-		<script type="text/javascript" src="/admin/horses/config/admin_horses.client.routes.js"></script>
-
-		<script type="text/javascript" src="/admin/admin.js"></script>
+		<script type="text/javascript" src="vendor.js"></script>
+		<script type="text/javascript" src="admin.js"></script>
 	</body>
 </html>

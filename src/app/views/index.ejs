@@ -7,13 +7,8 @@
 		<!-- some cool fonts -->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans|Pacifico|Source+Sans+Pro|Work+Sans" />
 
-		<!-- Font Awesome -->
-		<link rel="stylesheet" href="lib/font-awesome/css/font-awesome.min.css" />
-
-		<link rel="stylesheet" href="css/app.css" />
-		<link rel="stylesheet" href="home/css/home.css" />
-		<link rel="stylesheet" href="horses/css/horses.css" />
-		<link rel="stylesheet" href="about/css/about.css" />
+		<link rel="stylesheet" href="vendor.css" />
+		<link rel="stylesheet" href="all.css" />
 	</head>
 	<body>
 		<div id="topBar">
@@ -33,24 +28,7 @@
 			<div class="footerItem"><a href="/about">About</a></div>
 		</div>
 
-		<script type="text/javascript" src="/lib/angular/angular.js"></script>
-		<script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
-		<script type="text/javascript" src="/lib/angular-resource/angular-resource.js"></script>
-
-		<script type="text/javascript" src="/shared_services/shared_services.client.module.js"></script>
-		<script type="text/javascript" src="/shared_services/horses.client.service.js"></script>
-
-		<script type="text/javascript" src="/home/home.client.module.js"></script>
-		<script type="text/javascript" src="/home/controllers/home.client.controller.js"></script>
-		<script type="text/javascript" src="/home/config/home.client.routes.js"></script>
-
-		<script type="text/javascript" src="/horses/horses.client.module.js"></script>
-		<script type="text/javascript" src="/horses/controllers/horses.client.controller.js"></script>
-		<script type="text/javascript" src="/horses/config/horses.client.routes.js"></script>
-
-		<script type="text/javascript" src="/about/about.client.module.js"></script>
-		<script type="text/javascript" src="/about/config/about.client.routes.js"></script>
-
-		<script type="text/javascript" src="/app.js"></script>
+		<script type="text/javascript" src="vendor.js"></script>
+		<script type="text/javascript" src="all.js"></script>
 	</body>
 </html>

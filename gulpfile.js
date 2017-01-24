@@ -1,107 +1,116 @@
 var del = require('del');
 var gulp = require('gulp');
-var cleanCSS = require('gulp-clean-css');
+var concat = require('gulp-concat');
+var order = require('gulp-order');
 var plumber = require('gulp-plumber');
 var sass = require('gulp-sass');
+var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
-var vendor = require('gulp-concat-vendor');
+
+// Constants
+
+var prodDir = 'dist/prod/';
+var devDir = 'dist/dev/';
+var vendorDir = 'src/public/vendor/';
+
+var vendorDependencies = [
+	'angular/angular.js',
+	'angular-resource/angular-resource.js',
+	'angular-route/angular-route.js'
+	];
 
 // Clean Tasks
 
-gulp.task('clean-prod', function () {
-	return del(['dist/prod']);
+gulp.task('clean', function () {
+	return del(['dist/']);
 });
 
-gulp.task('clean-dev', function () {
-	return del(['dist/dev']);
+/**
+ * Distribution Tasks
+ */
+ 
+// Process/move all client-side js
+gulp.task('prod-admin-js', function () {
+	return gulp.src([
+			'src/public/admin/**/*module.js',
+			'src/public/shared_services/**/*module.js',
+			'src/public/admin/**/*.js',
+			'src/public/shared_services/**/*.js'])
+		.pipe(plumber())
+		.pipe(sourcemaps.init())
+		.pipe(concat('admin.js'))
+		.pipe(uglify())
+		.pipe(sourcemaps.write('./'))
+		.pipe(gulp.dest(prodDir + 'public/'));
 });
-
-gulp.task('clean', ['clean-prod', 'clean-dev']);
-
-// Distribution Tasks
 
 gulp.task('prod-js', function () {
-	return gulp.src(['src/public/**/*.js'])
+	return gulp.src([
+			'src/public/**/*module.js',
+			'src/public/**/*.js',
+			'src/public/app.js',
+			'!src/public/vendor/**/*.js',
+			'!src/public/admin/**/*.js'])
 		.pipe(plumber())
+		.pipe(sourcemaps.init())
+		.pipe(concat('all.js'))
 		.pipe(uglify())
-		.pipe(gulp.dest('dist/prod/public/'));
+		.pipe(sourcemaps.write('./'))
+		.pipe(gulp.dest(prodDir + 'public/'));
 });
 
+// Process/move scss to css
 gulp.task('prod-scss', function () {
-	return gulp.src('src/**/*.scss')
+	return gulp.src('src/public/scss/all.scss')
 		.pipe(plumber())
-		.pipe(sass().on('error', sass.logError))
-		.pipe(cleanCSS({compatibility: 'ie8'}))
-		.pipe(gulp.dest('dist/prod/'));
+		.pipe(sourcemaps.init())
+		.pipe(sass({
+			outputStyle: 'compressed',
+			outFile: 'all.css'})
+			.on('error', sass.logError))
+		.pipe(sourcemaps.write('./'))
+		.pipe(gulp.dest(prodDir + 'public'));
 });
 
-gulp.task('prod-public-lib', function () {
-	return gulp.src('src/public/lib')
+// Process/move all vendor code
+gulp.task('prod-vendor', function () {
+	var vendorList = vendorDependencies.map(function (curr, i, arr) {
+		return vendorDir + curr;
+	});
+
+	return gulp.src(vendorList)
 		.pipe(plumber())
-		.pipe(gulp.dest('dist/prod/public/lib/'));
+		.pipe(sourcemaps.init())
+		.pipe(concat('vendor.js'))
+		.pipe(uglify())
+		.pipe(sourcemaps.write('./'))
+		.pipe(gulp.dest(prodDir + 'public/'));
 });
 
-gulp.task('prod-public', function () {
+// Process/move all non-vendor client side files
+gulp.task('prod-client', function () {
 	return gulp.src([
 		'src/public/**/*',
 		'!src/public/**/*.js',
-		'!src/public/**/*.scss'])
+		'!src/public/**/*.scss',
+		'!src/public/vendor/**/*'])
 		.pipe(plumber())
-		.pipe(gulp.dest('dist/prod/public'));
+		.pipe(gulp.dest(prodDir + 'public'));
 });
 
+// Process/move all server files.
 gulp.task('prod-server', function () {
 	return gulp.src([
-		'src/**/*.ejs',
-		'src/**/*.js',
+		'src/**/*',
 		'!src/public/**/*'])
 		.pipe(plumber())
-		.pipe(gulp.dest('dist/prod/'));
+		.pipe(gulp.dest(prodDir));
 });
 
-// Development Tasks
+/**
+ * Task Shortcuts
+ */ 
 
-gulp.task('dev-js', function () {
-	return gulp.src('src/public/**/*.js')
-		.pipe(plumber())
-		.pipe(gulp.dest('dist/dev/public/'));
-});
+gulp.task('prod', ['prod-js', 'prod-scss', 'prod-server', 'prod-client', 'prod-vendor', 'prod-admin-js']);
 
-gulp.task('dev-scss', function () {
-	return gulp.src('src/**/*.scss')
-		.pipe(plumber())
-		.pipe(sass().on('error', sass.logError))
-		.pipe(gulp.dest('dist/dev/'));
-});
-
-gulp.task('dev-public-lib', function () {
-	return gulp.src('src/public/lib')
-		.pipe(plumber())
-		.pipe(gulp.dest('dist/dev/public/lib/'));
-});
-
-gulp.task('dev-public', function () {
-	return gulp.src([
-		'src/public/**/*',
-		'!src/public/**/*.js',
-		'!src/public/**/*.scss'])
-		.pipe(plumber())
-		.pipe(gulp.dest('dist/dev/public'));
-});
-
-gulp.task('dev-server', function () {
-	return gulp.src([
-		'src/**/*.ejs',
-		'src/**/*.js',
-		'!src/public/**/*'])
-		.pipe(plumber())
-		.pipe(gulp.dest('dist/dev/'));
-});
-
-// Task Shortcuts
-
-gulp.task('prod', ['prod-js', 'prod-scss', 'prod-server', 'prod-public', 'prod-public-lib', 'prod-vendor']);
-
-gulp.task('dev', ['dev-js', 'dev-scss', 'dev-server', 'dev-public', 'dev-public-lib']);
-
-gulp.task('default', ['prod', 'dev']);
+gulp.task('default', ['prod']);
