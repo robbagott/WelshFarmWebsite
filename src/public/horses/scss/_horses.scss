@@ -3,62 +3,59 @@
 */
 
 .controlsContainer {
-	width: 1000px;
+	border-color: #808080;
 	height: 100px;
-	border-color: grey;
 	margin: auto;
 	text-align: center;
+	width: 1000px;
 }
 
 .filtersLabel {
-	position: relative;
+	display: block;
 	height: auto;
 	margin: 0px 10px 0px 0px;
 	position: relative;
-	display: block;
 	width: 150px;
 }
 
 .filter {
 	display: inline-block;
 	height: auto;
-	padding: 20px 0;
 	margin: 0px 10px 0px 0px;
+	padding: 20px 0;
 	position: relative;
 	width: 150px;
-}
 
-.filter input {
-	display: none;
+	input {
+		display: none;
+	}
 }
 
 .pressButton {
 	background-color: transparent;
-	border: 2px solid #cc6060;
-	bottom: 0;
+	border: 2px solid $site-primary-color;
+	bottom: 0; 
 	cursor: pointer;
 	font-family: 'Source Sans Pro';
 	left: 0;
 	line-height: 2.2;
-	-moz-transition: background-color 100ms ease;
-	-moz-user-select: none;
-    -ms-transition: background-color 100ms ease;
-	-ms-user-select: none;
-    -o-transition: background-color 100ms ease;
 	position: absolute;
 	right: 0;
 	top: 0;
     transition: background-color 100ms ease;
 	user-select: none;
-    -webkit-transition: background-color 100ms ease;
+    -moz-transition: background-color 100ms ease;
+	-moz-user-select: none;
+    -ms-transition: background-color 100ms ease;
+	-ms-user-select: none;
+    -o-transition: background-color 100ms ease;-webkit-transition: background-color 100ms ease;
 	-webkit-user-select: none;
 }
 
 
 input:checked + .pressButton {
-	background-color: #cc6060;
+	background-color: $site-primary-color;
 }
-
 
 /*
 	Horse Entries Styles.
@@ -82,10 +79,10 @@ input:checked + .pressButton {
 	width: 300px;
 	-moz-transition: all .2s ease-in-out;
 	-webkit-transition: all .2s ease-in-out;
-}
 
-.horseEntry:hover {
-	transform: scale(1.05);
+	&:hover {
+		transform: scale(1.05);
+	}
 }
 
 .horseImageWrapper {
@@ -104,7 +101,7 @@ input:checked + .pressButton {
 }
 
 .horseShowName {
-	color: #cc6060;
+	color: $site-primary-color;
 	font-size: 30px;
 	font-weight: bold;
 }
@@ -122,5 +119,5 @@ input:checked + .pressButton {
 }
 
 .horseField { 
-	color: #cc6060;
+	color: $site-primary-color;
 }

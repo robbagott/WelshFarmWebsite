@@ -1,18 +1,15 @@
 body {
-	background-color: rgba(20, 20, 20, 255);
-	color: white;
+	background-color: $site-background-color;
+	color: #FFFFFF;
 	margin: 0px;
 	padding: 0px;
 }
 
 a {
-	color: white;
-	font-weight: bold;
+	color: #000000;
 	font-style: normal;
+	font-weight: bold;
 	text-decoration: none;
-}
-
-#content {
 }
 
 #topBar {
@@ -20,66 +17,58 @@ a {
 }
 
 #logo {
-	position: relative;
 	display: inline-block;
-
 	font-family: 'Pacifico', cursive;
 	font-size: 40px;
 	margin: 15px 30px;
-
-	-webkit-user-select: none;       
+	position: relative;
 	-moz-user-select: none;
  	-ms-user-select: none;
+	-webkit-user-select: none;
 }
 
 #navbar {
 	display: inline-block;
+	font-family: 'Pacifico', cursive;
+	height: 100%;
 	position: absolute;
 	right: 0px;
-	height: 100%;
-
-	font-family: 'Pacifico', cursive;
 }
 
 .navbarItem {
-	position: relative;
+	box-sizing: border-box;
 	display: inline-block;
 	height: 100%;
-
-	box-sizing: border-box;
-	padding: 20px;
-	margin: 10px 40px 10px 0px;
 	font-size: 25px;
-
-	-webkit-user-select: none;       
+	margin: 10px 40px 10px 0px;
+	padding: 20px;
+	position: relative;
 	-moz-user-select: none;
  	-ms-user-select: none;
-}
+	-webkit-user-select: none;
 
-.navbarItem a:hover {
-	color: #cc6060;
+	a:hover {
+		color: $site-primary-color;
+	}
 }
 
 #footer {
-	width: 100%;
+	background: $site-background-color; 
 	height: 80px;
 	text-align: center;
-
-	background: rgba(20, 20, 20, 255); 
+	width: 100%;
 }
 
 .footerItem {
 	display: inline-block;
-	margin: 20px;
-
 	font-family: 'Pacifico', cursive;
 	font-size: 18px;
-
-	-webkit-user-select: none;       
+	margin: 20px;
 	-moz-user-select: none;
  	-ms-user-select: none;
+	-webkit-user-select: none;       
 }
 
 .footerItem a:hover {
-	color: #cc6060;
+	color: $site-primary-color;
 }

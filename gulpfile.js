@@ -26,6 +26,14 @@ gulp.task('clean', function () {
 });
 
 /**
+ * Watch Tasks
+ */
+
+ gulp.task('watch-sass', function () {
+ 	gulp.watch('src/public/**/*.scss', ['prod-sass']);
+ });
+
+/**
  * Distribution Tasks
  */
  
@@ -59,8 +67,8 @@ gulp.task('prod-js', function () {
 		.pipe(gulp.dest(prodDir + 'public/'));
 });
 
-// Process/move scss to css
-gulp.task('prod-scss', function () {
+// Process/move sass to css
+gulp.task('prod-sass', function () {
 	return gulp.src('src/public/scss/all.scss')
 		.pipe(plumber())
 		.pipe(sourcemaps.init())
@@ -111,6 +119,8 @@ gulp.task('prod-server', function () {
  * Task Shortcuts
  */ 
 
-gulp.task('prod', ['prod-js', 'prod-scss', 'prod-server', 'prod-client', 'prod-vendor', 'prod-admin-js']);
+gulp.task('prod', ['prod-js', 'prod-sass', 'prod-server', 'prod-client', 'prod-vendor', 'prod-admin-js']);
+
+gulp.task('watch', ['watch-sass']);
 
 gulp.task('default', ['prod']);

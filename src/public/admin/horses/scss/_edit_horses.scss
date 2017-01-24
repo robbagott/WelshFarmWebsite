@@ -5,8 +5,8 @@
 }
 
 .horseTableEntry {
-	background-color: white;
-	color: rgb(100, 100, 255);
+	background-color: #FFFFFF;
+	color: $site-primary-color;
 	font-family: 'Source Sans Pro';
 	list-style: none;
 	margin: 5px 0;
@@ -14,15 +14,15 @@
 }
 
 .horseTableEntry a {
-	color: black;
+	color: #000000;
 	margin: 5px;
 }
 
 .editButton {
 	background-color: transparent;
 	border: none;
-	color: rgb(100, 100, 255);
+	color: $site-primary-color;
 	cursor: pointer;
-	padding: 0;
 	margin: 5px 0px 5px 5px;
+	padding: 0;
 }
