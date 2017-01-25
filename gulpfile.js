@@ -1,3 +1,4 @@
+var browserSync = require('browser-sync').create();
 var del = require('del');
 var gulp = require('gulp');
 var concat = require('gulp-concat');
@@ -29,9 +30,23 @@ gulp.task('clean', function () {
  * Watch Tasks
  */
 
- gulp.task('watch-sass', function () {
- 	gulp.watch('src/public/**/*.scss', ['prod-sass']);
- });
+gulp.task('watch-sass', function () {
+	gulp.watch('src/public/**/*.scss', ['prod-sass']);
+});
+
+gulp.task('watch-js', function () {
+	gulp.watch('src/public/**/*.js', ['prod-js', 'prod-admin-js']);
+});
+
+gulp.task('browser-sync', ['prod-sass'], function () {
+	browserSync.init({
+		proxy: 'localhost:3000',
+		open: false
+	});
+
+	gulp.watch('src/public/**/*.scss', ['prod-sass']);
+	gulp.watch('src/public/**/*.html').on('change', browserSync.reload);
+});
 
 /**
  * Distribution Tasks
@@ -77,7 +92,8 @@ gulp.task('prod-sass', function () {
 			outFile: 'all.css'})
 			.on('error', sass.logError))
 		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest(prodDir + 'public'));
+		.pipe(gulp.dest(prodDir + 'public'))
+		.pipe(browserSync.stream());
 });
 
 // Process/move all vendor code
@@ -121,6 +137,6 @@ gulp.task('prod-server', function () {
 
 gulp.task('prod', ['prod-js', 'prod-sass', 'prod-server', 'prod-client', 'prod-vendor', 'prod-admin-js']);
 
-gulp.task('watch', ['watch-sass']);
+gulp.task('watch', ['watch-sass', 'watch-js']);
 
 gulp.task('default', ['prod']);
