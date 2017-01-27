@@ -1,27 +1,27 @@
 .editHorseForm {
-	font-family: serif;
+	font-family: $site-serif;
 	margin: auto;
 	width: 300px;
 }
 
 .horseTableEntry {
-	background-color: #FFFFFF;
-	color: $site-primary-color;
-	font-family: 'Source Sans Pro';
+	background-color: $white;
+	color: $site-primary;
+	font-family: $site-sans;
 	list-style: none;
 	margin: 5px 0;
 	width: 100%;
 }
 
 .horseTableEntry a {
-	color: #000000;
+	color: $black;
 	margin: 5px;
 }
 
 .editButton {
 	background-color: transparent;
 	border: none;
-	color: $site-primary-color;
+	color: $site-primary;
 	cursor: pointer;
 	margin: 5px 0px 5px 5px;
 	padding: 0;

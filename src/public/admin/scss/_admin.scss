@@ -1,12 +1,12 @@
 body {
-	background-color: $site-background-color;
-	color: #FFFFFF;
+	background-color: $site-background;
+	color: $white;
 	margin: 0px;
 	padding: 0px;
 }
 
 a {
-	color: #FFFFFF;
+	color: $white;
 	font-weight: bold;
 	font-style: normal;
 	text-decoration: none;
@@ -23,17 +23,15 @@ a {
 #logo {
 	display: inline-block;
 	position: relative;
-	font-family: 'Pacifico', cursive;
+	font-family: $site-show-font;
 	font-size: 40px;
 	margin: 15px 30px;
-	-moz-user-select: none;
- 	-ms-user-select: none;
-	-webkit-user-select: none;       
+	user-select: none;
 }
 
 #navbar {
 	display: inline-block;
-	font-family: 'Pacifico', cursive;
+	font-family: $site-show-font;
 	height: 100%;
 	position: absolute;
 	right: 0px;
@@ -47,12 +45,10 @@ a {
 	margin: 10px 40px 10px 0px;
 	padding: 20px;
 	position: relative;
-	-moz-user-select: none;
- 	-ms-user-select: none;
-	-webkit-user-select: none;   
+	user-select: none;
 
 	a:hover {
-		color: $site-primary-color;
+		color: $site-primary;
 	}    
 }
 

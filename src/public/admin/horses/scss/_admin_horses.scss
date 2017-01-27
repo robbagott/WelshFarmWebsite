@@ -3,14 +3,14 @@
 @import "edit_horse.scss";
 
 .adminHorseMenu {
-	font-family: serif;
+	font-family: $site-serif;
 	margin: auto;
 	width: 300px;
 }
 
 .adminMenuItem {
-	background-color: $site-primary-color;
-	color: #FFFFFF;
+	background-color: $site-primary;
+	color: $white;
 	display: inline-block;
 	padding: 5px;
 	margin: 10px auto;

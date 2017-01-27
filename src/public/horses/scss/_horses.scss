@@ -3,7 +3,6 @@
 */
 
 .controlsContainer {
-	border-color: #808080;
 	height: 100px;
 	margin: auto;
 	text-align: center;
@@ -33,10 +32,10 @@
 
 .pressButton {
 	background-color: transparent;
-	border: 2px solid $site-primary-color;
+	border: 2px solid $site-primary;
 	bottom: 0; 
 	cursor: pointer;
-	font-family: 'Source Sans Pro';
+	font-family: $site-sans-title;
 	left: 0;
 	line-height: 2.2;
 	position: absolute;
@@ -44,17 +43,11 @@
 	top: 0;
     transition: background-color 100ms ease;
 	user-select: none;
-    -moz-transition: background-color 100ms ease;
-	-moz-user-select: none;
-    -ms-transition: background-color 100ms ease;
-	-ms-user-select: none;
-    -o-transition: background-color 100ms ease;-webkit-transition: background-color 100ms ease;
-	-webkit-user-select: none;
 }
 
 
 input:checked + .pressButton {
-	background-color: $site-primary-color;
+	background-color: $site-primary;
 }
 
 /*
@@ -70,15 +63,13 @@ input:checked + .pressButton {
 
 .horseEntry {
 	display: inline-block;
-	font-family: 'Work Sans';
+	font-family: $site-sans-title;
 	margin: 20px 20px;
 	overflow: hidden;
 	text-align: left;
 	transition: all .5 ease-in-out;
 	vertical-align: top;
 	width: 300px;
-	-moz-transition: all .2s ease-in-out;
-	-webkit-transition: all .2s ease-in-out;
 
 	&:hover {
 		transform: scale(1.05);
@@ -101,12 +92,13 @@ input:checked + .pressButton {
 }
 
 .horseShowName {
-	color: $site-primary-color;
+	color: $site-primary;
 	font-size: 30px;
 	font-weight: bold;
 }
 
 .horseDescription {
+	font-family: $site-sans;
 	font-size: 12px;
 	font-weight: 400;
 	padding: 5px;
@@ -119,5 +111,5 @@ input:checked + .pressButton {
 }
 
 .horseField { 
-	color: $site-primary-color;
+	color: $site-primary;
 }

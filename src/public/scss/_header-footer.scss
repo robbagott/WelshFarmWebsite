@@ -1,12 +1,11 @@
 body {
-	background-color: $site-background-color;
-	color: #FFFFFF;
+	background-color: $site-background;
+	color: $site-primary-text;
 	margin: 0px;
 	padding: 0px;
 }
 
 a {
-	color: #000000;
 	font-style: normal;
 	font-weight: bold;
 	text-decoration: none;
@@ -18,18 +17,16 @@ a {
 
 #logo {
 	display: inline-block;
-	font-family: 'Pacifico', cursive;
+	font-family: $site-show-font;
 	font-size: 40px;
 	margin: 15px 30px;
 	position: relative;
-	-moz-user-select: none;
- 	-ms-user-select: none;
-	-webkit-user-select: none;
+	user-select: none;
 }
 
 #navbar {
 	display: inline-block;
-	font-family: 'Pacifico', cursive;
+	font-family: $site-show-font;
 	height: 100%;
 	position: absolute;
 	right: 0px;
@@ -43,17 +40,15 @@ a {
 	margin: 10px 40px 10px 0px;
 	padding: 20px;
 	position: relative;
-	-moz-user-select: none;
- 	-ms-user-select: none;
-	-webkit-user-select: none;
+	user-select: none;
 
 	a:hover {
-		color: $site-primary-color;
+		color: $site-primary;
 	}
 }
 
 #footer {
-	background: $site-background-color; 
+	background: $site-background; 
 	height: 80px;
 	text-align: center;
 	width: 100%;
@@ -61,14 +56,12 @@ a {
 
 .footerItem {
 	display: inline-block;
-	font-family: 'Pacifico', cursive;
+	font-family: $site-show-font;
 	font-size: 18px;
 	margin: 20px;
-	-moz-user-select: none;
- 	-ms-user-select: none;
-	-webkit-user-select: none;       
+	user-select: none;
 }
 
 .footerItem a:hover {
-	color: $site-primary-color;
+	color: $site-primary;
 }

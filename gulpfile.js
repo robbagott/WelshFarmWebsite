@@ -1,6 +1,7 @@
 var browserSync = require('browser-sync').create();
 var del = require('del');
 var gulp = require('gulp');
+var autoprefixer = require('gulp-autoprefixer');
 var concat = require('gulp-concat');
 var order = require('gulp-order');
 var plumber = require('gulp-plumber');
@@ -17,7 +18,7 @@ var vendorDir = 'src/public/vendor/';
 var vendorDependencies = [
 	'angular/angular.js',
 	'angular-resource/angular-resource.js',
-	'angular-route/angular-route.js'
+	'angular-route/angular-route.js',
 	];
 
 // Clean Tasks
@@ -40,8 +41,9 @@ gulp.task('watch-js', function () {
 
 gulp.task('browser-sync', ['prod-sass'], function () {
 	browserSync.init({
+		port: 3001,
 		proxy: 'localhost:3000',
-		open: false
+		open: false,
 	});
 
 	gulp.watch('src/public/**/*.scss', ['prod-sass']);
@@ -91,6 +93,9 @@ gulp.task('prod-sass', function () {
 			outputStyle: 'compressed',
 			outFile: 'all.css'})
 			.on('error', sass.logError))
+		.pipe(autoprefixer({
+			browsers: ['last 2 versions', 'ie >= 9', 'and_chr >= 2.3']
+		}))
 		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest(prodDir + 'public'))
 		.pipe(browserSync.stream());

@@ -1,5 +1,5 @@
 .addHorseForm {
-	font-family: serif;
+	font-family: $site-serif;
 	margin: auto;
 	width: 300px;
 }
@@ -20,9 +20,9 @@
 }
 
 .formError {
-	color: #FF0000;
+	color: $red;
 }
 
 .imageMessage {
-	color: #00FF00;
+	color: $green;
 }
