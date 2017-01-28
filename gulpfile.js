@@ -16,15 +16,20 @@ var devDir = 'dist/dev/';
 var vendorDir = 'src/public/vendor/';
 
 var vendorDependencies = [
-	'angular/angular.js',
-	'angular-resource/angular-resource.js',
-	'angular-route/angular-route.js',
-	];
+    'angular/angular.js',
+    'angular-resource/angular-resource.js',
+    'angular-route/angular-route.js',
+    ];
+
+var vendorSassPaths = [
+    vendorDir + 'foundation-sites/scss/',
+    vendorDir + 'font-awesome/scss/'
+    ];
 
 // Clean Tasks
 
 gulp.task('clean', function () {
-	return del(['dist/']);
+    return del(['dist/']);
 });
 
 /**
@@ -32,113 +37,117 @@ gulp.task('clean', function () {
  */
 
 gulp.task('watch-sass', function () {
-	gulp.watch('src/public/**/*.scss', ['prod-sass']);
+    gulp.watch('src/public/**/*.scss', ['prod-sass']);
 });
 
 gulp.task('watch-js', function () {
-	gulp.watch('src/public/**/*.js', ['prod-js', 'prod-admin-js']);
+    gulp.watch('src/public/**/*.js', ['prod-js', 'prod-admin-js']);
 });
 
-gulp.task('browser-sync', ['prod-sass'], function () {
-	browserSync.init({
-		port: 3001,
-		proxy: 'localhost:3000',
-		open: false,
-	});
+gulp.task('browser-sync', ['prod-sass', 'prod-client'], function () {
+    browserSync.init({
+        port: 3001,
+        proxy: 'localhost:3000',
+        open: false,
+    });
 
-	gulp.watch('src/public/**/*.scss', ['prod-sass']);
-	gulp.watch('src/public/**/*.html').on('change', browserSync.reload);
+    gulp.watch('src/public/**/*.scss', ['prod-sass']);
+    gulp.watch('src/**/*.ejs', ['prod-server']).on('change', browserSync.reload);
+    gulp.watch('src/public/**/*.html').on('change', browserSync.reload);
 });
 
 /**
  * Distribution Tasks
  */
- 
+
 // Process/move all client-side js
 gulp.task('prod-admin-js', function () {
-	return gulp.src([
-			'src/public/admin/**/*module.js',
-			'src/public/shared_services/**/*module.js',
-			'src/public/admin/**/*.js',
-			'src/public/shared_services/**/*.js'])
-		.pipe(plumber())
-		.pipe(sourcemaps.init())
-		.pipe(concat('admin.js'))
-		.pipe(uglify())
-		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest(prodDir + 'public/'));
+    return gulp.src([
+            'src/public/admin/**/*module.js',
+            'src/public/shared_services/**/*module.js',
+            'src/public/admin/**/*.js',
+            'src/public/shared_services/**/*.js'])
+        .pipe(plumber())
+        .pipe(sourcemaps.init())
+        .pipe(concat('admin.js'))
+        .pipe(uglify())
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest(prodDir + 'public/'));
 });
 
 gulp.task('prod-js', function () {
-	return gulp.src([
-			'src/public/**/*module.js',
-			'src/public/**/*.js',
-			'src/public/app.js',
-			'!src/public/vendor/**/*.js',
-			'!src/public/admin/**/*.js'])
-		.pipe(plumber())
-		.pipe(sourcemaps.init())
-		.pipe(concat('all.js'))
-		.pipe(uglify())
-		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest(prodDir + 'public/'));
+    return gulp.src([
+            'src/public/**/*module.js',
+            'src/public/**/*.js',
+            'src/public/app.js',
+            '!src/public/vendor/**/*.js',
+            '!src/public/admin/**/*.js'])
+        .pipe(plumber())
+        .pipe(sourcemaps.init())
+        .pipe(concat('all.js'))
+        .pipe(uglify())
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest(prodDir + 'public/'));
 });
 
 // Process/move sass to css
 gulp.task('prod-sass', function () {
-	return gulp.src('src/public/scss/all.scss')
-		.pipe(plumber())
-		.pipe(sourcemaps.init())
-		.pipe(sass({
-			outputStyle: 'compressed',
-			outFile: 'all.css'})
-			.on('error', sass.logError))
-		.pipe(autoprefixer({
-			browsers: ['last 2 versions', 'ie >= 9', 'and_chr >= 2.3']
-		}))
-		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest(prodDir + 'public'))
-		.pipe(browserSync.stream());
+    return gulp.src('src/public/scss/all.scss')
+        .pipe(plumber())
+        .pipe(sourcemaps.init())
+        .pipe(sass({
+            includePaths: vendorSassPaths,
+            outputStyle: 'compressed',
+            outFile: 'all.css'})
+            .on('error', sass.logError))
+        .pipe(sourcemaps.write({includeContent: false}))        // Needed for the sourcemaps to turn out correctly -_-
+        .pipe(sourcemaps.init({loadMaps: true}))                // ^
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions', 'ie >= 9', 'and_chr >= 2.3']
+        }))
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest(prodDir + 'public'))
+        .pipe(browserSync.stream());
 });
 
 // Process/move all vendor code
 gulp.task('prod-vendor', function () {
-	var vendorList = vendorDependencies.map(function (curr, i, arr) {
-		return vendorDir + curr;
-	});
+    var vendorList = vendorDependencies.map(function (curr, i, arr) {
+        return vendorDir + curr;
+    });
 
-	return gulp.src(vendorList)
-		.pipe(plumber())
-		.pipe(sourcemaps.init())
-		.pipe(concat('vendor.js'))
-		.pipe(uglify())
-		.pipe(sourcemaps.write('./'))
-		.pipe(gulp.dest(prodDir + 'public/'));
+    return gulp.src(vendorList)
+        .pipe(plumber())
+        .pipe(sourcemaps.init())
+        .pipe(concat('vendor.js'))
+        .pipe(uglify())
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest(prodDir + 'public/'));
 });
 
 // Process/move all non-vendor client side files
 gulp.task('prod-client', function () {
-	return gulp.src([
-		'src/public/**/*',
-		'!src/public/**/*.js',
-		'!src/public/**/*.scss',
-		'!src/public/vendor/**/*'])
-		.pipe(plumber())
-		.pipe(gulp.dest(prodDir + 'public'));
+    return gulp.src([
+        'src/public/**/*',
+        '!src/public/**/*.js',
+        '!src/public/**/*.scss',
+        '!src/public/vendor/**/*'])
+        .pipe(plumber())
+        .pipe(gulp.dest(prodDir + 'public'));
 });
 
 // Process/move all server files.
 gulp.task('prod-server', function () {
-	return gulp.src([
-		'src/**/*',
-		'!src/public/**/*'])
-		.pipe(plumber())
-		.pipe(gulp.dest(prodDir));
+    return gulp.src([
+        'src/**/*',
+        '!src/public/**/*'])
+        .pipe(plumber())
+        .pipe(gulp.dest(prodDir));
 });
 
 /**
  * Task Shortcuts
- */ 
+ */
 
 gulp.task('prod', ['prod-js', 'prod-sass', 'prod-server', 'prod-client', 'prod-vendor', 'prod-admin-js']);
 

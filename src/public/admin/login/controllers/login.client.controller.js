@@ -1,12 +1,12 @@
 (function () {
-	'use strict';
+    'use strict';
 
-	angular
-		.module('login')
-		.controller('AdminLoginController', AdminLoginController);
+    angular
+        .module('login')
+        .controller('AdminLoginController', AdminLoginController);
 
-	AdminLoginController.$inject = [];
+    AdminLoginController.$inject = [];
 
-	function AdminLoginController() {
-	}
+    function AdminLoginController() {
+    }
 })();

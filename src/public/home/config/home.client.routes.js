@@ -1,19 +1,19 @@
 (function () {
-	'use strict';
+    'use strict';
 
-	angular
-		.module('home')
-		.config(configureHomeRoute);
+    angular
+        .module('home')
+        .config(configureHomeRoute);
 
-	configureHomeRoute.$inject = ['$routeProvider'];
+    configureHomeRoute.$inject = ['$routeProvider'];
 
-	function configureHomeRoute($routeProvider) {
-		console.log('Configured home route');
-		$routeProvider.when('/home', {
-			templateUrl: 'home/views/home.client.view.html'
-		})
-		.otherwise({
-			redirectTo: '/home'
-		});
-	}
+    function configureHomeRoute($routeProvider) {
+        console.log('Configured home route');
+        $routeProvider.when('/home', {
+            templateUrl: 'home/views/home.client.view.html'
+        })
+        .otherwise({
+            redirectTo: '/home'
+        });
+    }
 })();

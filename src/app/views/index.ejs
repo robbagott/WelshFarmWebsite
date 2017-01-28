@@ -1,34 +1,57 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Faylin Welsh</title>
-		<base href="/"></base>
+<head>
+    <title>Faylin Welsh</title>
+    <base href="/"></base>
 
-		<!-- some cool fonts -->
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans|Pacifico|Source+Sans+Pro|Work+Sans" />
+    <!-- some cool fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans|Pacifico|Source+Sans+Pro|Work+Sans" />
 
-		<link rel="stylesheet" href="vendor.css" />
-		<link rel="stylesheet" href="all.css" />
-	</head>
-	<body>
-		<div id="topBar">
-			<div id="logo"><a href="/home">Faylin Welsh</a></div>
-			<div id="navbar">
-				<div class="navbarItem"><a href="/contact">Blog</a></div>
-				<div class="navbarItem"><a href="/horses">Horses</a></div>
-				<div class="navbarItem"><a href="/about">About</a></div>
-			</div>
-		</div>
-		<section id="content" ng-view></section>
+    <link rel="stylesheet" href="vendor.css" />
+    <link rel="stylesheet" href="all.css" />
+</head>
+<body>
+    <div id="topBar">
+        <div id="logo"><a href="/home">Faylin Welsh</a></div>
+        <div id="navbar">
+            <div class="navbarItem"><a href="/contact">Blog</a></div>
+            <div class="navbarItem"><a href="/horses">Horses</a></div>
+            <div class="navbarItem"><a href="/about">About</a></div>
+        </div>
+    </div>
+    <section id="content" ng-view></section>
 
-		<div id="footer">
-			<div class="footerItem"><a href="/home">Home</a></div>
-			<div class="footerItem"><a href="/contact">Blog</a></div>
-			<div class="footerItem"><a href="/horses">Horses</a></div>
-			<div class="footerItem"><a href="/about">About</a></div>
-		</div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="row">
+        <div class="small-6 medium-3 large-2 large-centered columns">
+            <h2>Contact Us</h2>
+            <h8> Address </h8>
+            <p>
+                267 Murphy Lane
+                Keatchie, LA 71046
+            </p>
+        </div>
+        <div class="small-6 medium-3 large-2 large-centered columns">
+            <h2>Site Map</h2>
+            <ul class="footer-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Horses</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="small-6 medium-3 large-2 large-centered columns">
+            <h2>Follow Us</h2>
+            <ul class="footer-links">
+                <li><a href="#">Facebook</a></li>
+            <ul>
+        </div>
+        </div>
+    </footer>
 
-		<script type="text/javascript" src="vendor.js"></script>
-		<script type="text/javascript" src="all.js"></script>
-	</body>
+    <script type="text/javascript" src="vendor.js"></script>
+    <script type="text/javascript" src="all.js"></script>
+</body>
 </html>

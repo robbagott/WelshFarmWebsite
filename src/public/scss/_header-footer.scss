@@ -1,67 +1,84 @@
 body {
-	background-color: $site-background;
-	color: $site-primary-text;
-	margin: 0px;
-	padding: 0px;
-}
-
-a {
-	font-style: normal;
-	font-weight: bold;
-	text-decoration: none;
-}
-
-#topBar {
-	position: relative;
+    background: url("../assets/resources/stressed_linen.png") repeat ;
+    color: $primary-color;
+    margin: 0px;
+    padding: 0px;
 }
 
 #logo {
-	display: inline-block;
-	font-family: $site-show-font;
-	font-size: 40px;
-	margin: 15px 30px;
-	position: relative;
-	user-select: none;
+    display: inline-block;
+    font-family: $site-show-font;
+    font-size: 40px;
+    margin: 15px 30px;
+    position: relative;
+    user-select: none;
+}
+
+#topBar {
+    a {
+        &:hover {
+            color: $primary-color;
+        }
+        &:focus {
+            color: inherit;
+            &:hover {
+            color: $primary-color;
+            }
+        }
+    }
 }
 
 #navbar {
-	display: inline-block;
-	font-family: $site-show-font;
-	height: 100%;
-	position: absolute;
-	right: 0px;
+    display: inline-block;
+    font-family: $site-show-font;
+    height: 100%;
+    position: absolute;
+    right: 0px;
 }
 
 .navbarItem {
-	box-sizing: border-box;
-	display: inline-block;
-	height: 100%;
-	font-size: 25px;
-	margin: 10px 40px 10px 0px;
-	padding: 20px;
-	position: relative;
-	user-select: none;
-
-	a:hover {
-		color: $site-primary;
-	}
+    box-sizing: border-box;
+    display: inline-block;
+    height: 100%;
+    font-size: 25px;
+    margin: 10px 40px 10px 0px;
+    padding: 20px;
+    position: relative;
+    user-select: none;
 }
 
-#footer {
-	background: $site-background; 
-	height: 80px;
-	text-align: center;
-	width: 100%;
+.footer {
+    padding: 2rem 4rem;
+    text-align: center;
+    width: 100%;
+
+    h4 {
+        font-size: 1em;
+        font-weight: 400;
+        margin-bottom: 1rem;
+        margin-top: 2.5rem;
+        text-transform: uppercase;
+    }
+
+    p, a {
+        font-size: .8em;
+        font-weight: 300;
+    }
 }
 
-.footerItem {
-	display: inline-block;
-	font-family: $site-show-font;
-	font-size: 18px;
-	margin: 20px;
-	user-select: none;
+.footer-links {
+    list-style-type: none;
+    li {
+        margin-top: .5em;
+    }
 }
 
-.footerItem a:hover {
-	color: $site-primary;
+
+@media only screen and (min-width: 40.063em) {
+.footer {
+    .columns:nth-child(n+2) {
+        border-left: 1px solid scale-color($white, $lightness: -30%);
+        min-height: 280px;
+        }
+    }
 }

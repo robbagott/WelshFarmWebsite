@@ -1,59 +1,59 @@
 <section class="editHorseForm" ng-controller="AdminHorseController as hc" ng-init="hc.findOne()">
-	<form ng-submit="hc.update()">
-		<span class="formItem" >Show Name</span> <br>
-		<input type="text" class="nameInputBox" ng-model="hc.horse.showName"/> <br>
+    <form ng-submit="hc.update()">
+        <span class="formItem" >Show Name</span> <br>
+        <input type="text" class="nameInputBox" ng-model="hc.horse.showName"/> <br>
 
-		<span class="formItem" >Farm Name</span> <br>
-		<input type="text" class="nameInputBox" ng-model="hc.horse.farmName"/> <br>
+        <span class="formItem" >Farm Name</span> <br>
+        <input type="text" class="nameInputBox" ng-model="hc.horse.farmName"/> <br>
 
-		<span class="formItem" >Birth Date</span> <br>
-		<input type="text" class="nameInputBox" ng-model="hc.horse.birthDate"/> <br>
+        <span class="formItem" >Birth Date</span> <br>
+        <input type="text" class="nameInputBox" ng-model="hc.horse.birthDate"/> <br>
 
-		<span class="formItem" >Sex</span> <br>
-		<label class="formItem">
-			<input type="radio" value="male" ng-model="hc.horse.sex" checked/>
-			Male
-		</label>
-		<label>
-			<input type="radio" value="female" ng-model="hc.horse.sex"/>
-			Female
-		</label class="formItem"> <br>
-		<label class="formItem">
-			<input type="checkbox" ng-model="hc.horse.gelded"/> Gelded
-		</label> <br>
+        <span class="formItem" >Sex</span> <br>
+        <label class="formItem">
+            <input type="radio" value="male" ng-model="hc.horse.sex" checked/>
+            Male
+        </label>
+        <label>
+            <input type="radio" value="female" ng-model="hc.horse.sex"/>
+            Female
+        </label class="formItem"> <br>
+        <label class="formItem">
+            <input type="checkbox" ng-model="hc.horse.gelded"/> Gelded
+        </label> <br>
 
-		<span class="formItem" >Color</span> <br>
-		<input type="text" class="nameInputBox" ng-model="hc.horse.color"/> <br>
+        <span class="formItem" >Color</span> <br>
+        <input type="text" class="nameInputBox" ng-model="hc.horse.color"/> <br>
 
-		<label class="formItem">
-			<input type="checkbox" ng-model="hc.horse.grey"/> Grey
-		</label> <br>
+        <label class="formItem">
+            <input type="checkbox" ng-model="hc.horse.grey"/> Grey
+        </label> <br>
 
-		<span class="formItem" >Height</span> <br>
-		<input type="text" class="nameInputBox" ng-model="hc.horse.height"/> <br>
+        <span class="formItem" >Height</span> <br>
+        <input type="text" class="nameInputBox" ng-model="hc.horse.height"/> <br>
 
-		<span class="formItem">Description</span> <br>
-		<textarea class="descriptionInputBox" ng-model="hc.horse.description"></textarea> <br>
+        <span class="formItem">Description</span> <br>
+        <textarea class="descriptionInputBox" ng-model="hc.horse.description"></textarea> <br>
 
-		<span class="formItem" >Sire</span> <br>
-		<input type="text" class="nameInputBox" ng-model="hc.horse.sire"/> <br>
+        <span class="formItem" >Sire</span> <br>
+        <input type="text" class="nameInputBox" ng-model="hc.horse.sire"/> <br>
 
-		<span class="formItem" >Dam</span> <br>
-		<input type="text" class="nameInputBox" ng-model="hc.horse.dam"/> <br>
+        <span class="formItem" >Dam</span> <br>
+        <input type="text" class="nameInputBox" ng-model="hc.horse.dam"/> <br>
 
-		<span class="formItem">Horse Pictures</span> <br>
-		<div class="formItem"> 
-			<input type="file" multiple id="imageInput" class="nameInputBox" accept="image/*" />
-			<input type="button" value="Upload Images" ng-click="hc.addDataURLs()" /> <br>
-			<span class="imageMessage" ng-bind="hc.imageMessage"></span> <br>
-			<span class="formError" ng-bind="hc.imageError" ng-if="hc.imageError"></span> <br>
-		</div>
+        <span class="formItem">Horse Pictures</span> <br>
+        <div class="formItem">
+            <input type="file" multiple id="imageInput" class="nameInputBox" accept="image/*" />
+            <input type="button" value="Upload Images" ng-click="hc.addDataURLs()" /> <br>
+            <span class="imageMessage" ng-bind="hc.imageMessage"></span> <br>
+            <span class="formError" ng-bind="hc.imageError" ng-if="hc.imageError"></span> <br>
+        </div>
 
-		<input type="submit" value="Update Horse" class="formItem" /> <br> 
+        <input type="submit" value="Update Horse" class="formItem" /> <br>
 
-		<div class="formError" ng-if="hc.error">
-			<strong ng-bind="hc.error"></strong>
-		</div>
-	</form>
-	<div class="adminMenuItem"><a href="/admin/horses">Back to Menu</a></div>
+        <div class="formError" ng-if="hc.error">
+            <strong ng-bind="hc.error"></strong>
+        </div>
+    </form>
+    <div class="adminMenuItem"><a href="/admin/horses">Back to Menu</a></div>
 </section>

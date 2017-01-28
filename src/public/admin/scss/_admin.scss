@@ -1,54 +1,53 @@
 body {
-	background-color: $site-background;
-	color: $white;
-	margin: 0px;
-	padding: 0px;
+    color: $white;
+    margin: 0px;
+    padding: 0px;
 }
 
 a {
-	color: $white;
-	font-weight: bold;
-	font-style: normal;
-	text-decoration: none;
+    color: $white;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
 }
 
 #content {
-	min-height: 800px;
+    min-height: 800px;
 }
 
 #topBar {
-	position: relative;
+    position: relative;
 }
 
 #logo {
-	display: inline-block;
-	position: relative;
-	font-family: $site-show-font;
-	font-size: 40px;
-	margin: 15px 30px;
-	user-select: none;
+    display: inline-block;
+    position: relative;
+    font-family: $site-show-font;
+    font-size: 40px;
+    margin: 15px 30px;
+    user-select: none;
 }
 
 #navbar {
-	display: inline-block;
-	font-family: $site-show-font;
-	height: 100%;
-	position: absolute;
-	right: 0px;
+    display: inline-block;
+    font-family: $site-show-font;
+    height: 100%;
+    position: absolute;
+    right: 0px;
 }
 
 .navbarItem {
-	box-sizing: border-box;
-	display: inline-block;
-	font-size: 25px;
-	height: 100%;
-	margin: 10px 40px 10px 0px;
-	padding: 20px;
-	position: relative;
-	user-select: none;
+    box-sizing: border-box;
+    display: inline-block;
+    font-size: 25px;
+    height: 100%;
+    margin: 10px 40px 10px 0px;
+    padding: 20px;
+    position: relative;
+    user-select: none;
 
-	a:hover {
-		color: $site-primary;
-	}    
+    a:hover {
+        color: $primary-color;
+    }
 }
 

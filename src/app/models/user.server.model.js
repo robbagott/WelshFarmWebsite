@@ -6,31 +6,31 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var userSchema = new Schema({
-	username: {
-		type: String,
-		trim: true,
-		unique: true,
-		required: 'Username is required'
-	},
-	password: {
-		type: String,
-		validate: [
-			{
-				validator: function(password) {
-					//Check for presence of whitespace
-					return password && (password.indexOf(' ') < 0);
-				}, 
-				msg: 'Password contains whitespace'
-			},
-			{
-				validator: function(password) {
-					//Check for password length
-					return password && password.length > 6;
-				}, 
-				msg: 'Password is too short'
-			}
-		]
-	}
+    username: {
+        type: String,
+        trim: true,
+        unique: true,
+        required: 'Username is required'
+    },
+    password: {
+        type: String,
+        validate: [
+            {
+                validator: function(password) {
+                    //Check for presence of whitespace
+                    return password && (password.indexOf(' ') < 0);
+                },
+                msg: 'Password contains whitespace'
+            },
+            {
+                validator: function(password) {
+                    //Check for password length
+                    return password && password.length > 6;
+                },
+                msg: 'Password is too short'
+            }
+        ]
+    }
 });
 
 //Now, create a Model using the schema. A Model allows us to create Documents (Instances of the Model) and define methods (instance and static) for retrieving, saving, and manipulating Documents

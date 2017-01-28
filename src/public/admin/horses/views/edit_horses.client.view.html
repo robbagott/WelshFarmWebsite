@@ -1,12 +1,12 @@
 <section class="editHorseForm" ng-controller="AdminHorseController as hc" ng-init="hc.find()">
-	<div class="horsesTable">
-		<div class="horseTableEntry" ng-repeat="horse in hc.list">
-			<button class="editButton fa fa-trash" ng-click="hc.deleteHorse(horse)"> </button>
-			<a href="/admin/horses/{{horse.showName}}" ><button class="editButton fa fa-pencil" ng-click=""> </button></a>
-			<a href="/admin/horses/{{horse.showName}}" ng-bind="horse.showName"></a> <br>
-		</div>
-	<div ng-hide="!hc.list || hc.list.length">
-		No horses, yet. 
-	</div>
-	<div class="adminMenuItem"><a href="/admin/horses">Back to Menu</a></div>
+    <div class="horsesTable">
+        <div class="horseTableEntry" ng-repeat="horse in hc.list">
+            <button class="editButton fa fa-trash" ng-click="hc.deleteHorse(horse)"> </button>
+            <a href="/admin/horses/{{horse.showName}}" ><button class="editButton fa fa-pencil" ng-click=""> </button></a>
+            <a href="/admin/horses/{{horse.showName}}" ng-bind="horse.showName"></a> <br>
+        </div>
+    <div ng-hide="!hc.list || hc.list.length">
+        No horses, yet.
+    </div>
+    <div class="adminMenuItem"><a href="/admin/horses">Back to Menu</a></div>
 </section>

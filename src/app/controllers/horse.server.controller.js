@@ -5,103 +5,103 @@ var Horse = mongoose.model('Horse');
 
 // Convenience function for extracting error messages
 var getErrorMessage = function (err) {
-	console.log(err);
-	if (err.errors) {
-		for (var errName in err.errors) {
-			if (err.errors[errName].message) {
-				return err.errors[errName].message;
-			}
-		}
-	}
-	else {
-		return 'Unknown server error';
-	}
+    console.log(err);
+    if (err.errors) {
+        for (var errName in err.errors) {
+            if (err.errors[errName].message) {
+                return err.errors[errName].message;
+            }
+        }
+    }
+    else {
+        return 'Unknown server error';
+    }
 };
 
 // Try to create and save a horse with the req.body. If there is an error, it is returned in the response
 exports.create = function (req, res) {
-	var horse = new Horse(req.body);
-	horse.save(function (err) {
-		if (err) {
-			return res.status(400).send({
-				message: getErrorMessage(err)
-			});
-		}
-		else {
-			res.json(horse);
-		}
-	});
+    var horse = new Horse(req.body);
+    horse.save(function (err) {
+        if (err) {
+            return res.status(400).send({
+                message: getErrorMessage(err)
+            });
+        }
+        else {
+            res.json(horse);
+        }
+    });
 };
 
 // Gets the full list of horses. If there is an error, it is returned in the response
 exports.list = function (req, res) {
-	Horse.find().sort('showName').exec(function (err, horses) {
-		if (err) {
-			return res.status(400).send({
-				message: getErrorMessage(err)
-			});
-		}
-		else {
-			res.json(horses);
-		}
-	});
+    Horse.find().sort('showName').exec(function (err, horses) {
+        if (err) {
+            return res.status(400).send({
+                message: getErrorMessage(err)
+            });
+        }
+        else {
+            res.json(horses);
+        }
+    });
 };
 
 // Gets a horse by name. If there is an error, it is returned in the response
 exports.horseByName = function (req, res, next, name) {
-	Horse.findOne({
-		showName: name
-	}).exec(function (err, horse) {
-		if (err) {
-			return next(err);
-		}
-		if (!horse) {
-			return next(new Error('Failed to load horse ' + name));
-		}
-		req.horse = horse;
-		next();
-	});
+    Horse.findOne({
+        showName: name
+    }).exec(function (err, horse) {
+        if (err) {
+            return next(err);
+        }
+        if (!horse) {
+            return next(new Error('Failed to load horse ' + name));
+        }
+        req.horse = horse;
+        next();
+    });
 };
 
 exports.read = function (req, res) {
-	res.json(req.horse);
+    res.json(req.horse);
 };
 
 // Tries to update a horse. If there is an error, it is returned in the response. Assumes that req.horse is a horse that has been retrieved by middleware.
 exports.update = function (req, res) {
-	var horse = req.horse;
-	var updates = req.body;
+    var horse = req.horse;
+    var updates = req.body;
 
-	console.log(updates);
-	console.log(horse);
+    console.log(updates);
+    console.log(horse);
 
-	for (var prop in updates) {
-		horse[prop] = updates[prop];
-	}
+    for (var prop in updates) {
+        horse[prop] = updates[prop];
+    }
 
-	horse.save(function (err) {
-		if (err) {
-			return res.status(400).send({
-				message: getErrorMessage(err)
-			});
-		}
-		else {
-			res.json(horse);
-		}
-	});
+    horse.save(function (err) {
+        if (err) {
+            return res.status(400).send({
+                message: getErrorMessage(err)
+            });
+        }
+        else {
+            res.json(horse);
+        }
+    });
 };
 
 exports.delete = function (req, res) {
-	var horse = req.horse;
+    var horse = req.horse;
 
-	horse.remove(function (err) {
-		if (err) {
-			return res.status(400).send({
-				message: getErrorMessage(err)
-			});
-		}
-		else {
-			res.json(horse);
-		}
-	});
+    horse.remove(function (err) {
+        if (err) {
+            return res.status(400).send({
+                message: getErrorMessage(err)
+            });
+        }
+        else {
+            res.json(horse);
+        }
+    });
 };

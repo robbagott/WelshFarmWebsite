@@ -1,115 +1,110 @@
 /*
-	Controls styles.
+    Controls styles.
 */
 
 .controlsContainer {
-	height: 100px;
-	margin: auto;
-	text-align: center;
-	width: 1000px;
+    height: 100px;
+    margin: auto;
+    text-align: center;
+    width: 1000px;
 }
 
 .filtersLabel {
-	display: block;
-	height: auto;
-	margin: 0px 10px 0px 0px;
-	position: relative;
-	width: 150px;
+    display: block;
+    height: auto;
+    margin: 0px 10px 0px 0px;
+    position: relative;
+    width: 150px;
 }
 
 .filter {
-	display: inline-block;
-	height: auto;
-	margin: 0px 10px 0px 0px;
-	padding: 20px 0;
-	position: relative;
-	width: 150px;
+    display: inline-block;
+    height: auto;
+    margin: 0px 10px 0px 0px;
+    padding: 20px 0;
+    position: relative;
+    width: 150px;
 
-	input {
-		display: none;
-	}
+    input {
+        display: none;
+    }
 }
 
 .pressButton {
-	background-color: transparent;
-	border: 2px solid $site-primary;
-	bottom: 0; 
-	cursor: pointer;
-	font-family: $site-sans-title;
-	left: 0;
-	line-height: 2.2;
-	position: absolute;
-	right: 0;
-	top: 0;
+    background-color: transparent;
+    border: 2px solid $primary-color;
+    bottom: 0;
+    cursor: pointer;
+    font-family: $site-sans-title;
+    left: 0;
+    line-height: 2.2;
+    position: absolute;
+    right: 0;
+    top: 0;
     transition: background-color 100ms ease;
-	user-select: none;
+    user-select: none;
 }
 
 
 input:checked + .pressButton {
-	background-color: $site-primary;
+    background-color: $primary-color;
 }
 
 /*
-	Horse Entries Styles.
+    Horse Entries Styles.
 */
 
 .horsesListContainer {
-	color: black;
-	margin: 0 auto;
-	max-width: 1000px;
-	text-align: center;
+    color: black;
+    margin: 0 auto;
+    max-width: 1000px;
+    text-align: center;
 }
 
 .horseEntry {
-	display: inline-block;
-	font-family: $site-sans-title;
-	margin: 20px 20px;
-	overflow: hidden;
-	text-align: left;
-	transition: all .5 ease-in-out;
-	vertical-align: top;
-	width: 300px;
-
-	&:hover {
-		transform: scale(1.05);
-	}
+    display: inline-block;
+    font-family: $site-sans-title;
+    margin: 20px 20px;
+    overflow: hidden;
+    text-align: left;
+    vertical-align: top;
+    width: 300px;
 }
 
 .horseImageWrapper {
-	display: inline-block;
-	overflow: hidden;
+    display: inline-block;
+    overflow: hidden;
 }
 
 .horseImage {
-	position: relative;
-	width: 300px;
+    position: relative;
+    width: 300px;
 }
 
 .horseNameContainer {
-	padding: 5px;
-	text-align: center;
+    padding: 5px;
+    text-align: center;
 }
 
 .horseShowName {
-	color: $site-primary;
-	font-size: 30px;
-	font-weight: bold;
+    color: $primary-color;
+    font-size: 30px;
+    font-weight: bold;
 }
 
 .horseDescription {
-	font-family: $site-sans;
-	font-size: 12px;
-	font-weight: 400;
-	padding: 5px;
+    font-family: $site-sans;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 5px;
 }
 
 .horseFields {
-	float: left;
-	font-size: 12px;
-	padding: 5px;
+    float: left;
+    font-size: 12px;
+    padding: 5px;
 }
 
-.horseField { 
-	color: $site-primary;
+.horseField {
+    color: $primary-color;
 }

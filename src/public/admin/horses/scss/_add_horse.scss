@@ -1,28 +1,28 @@
 .addHorseForm {
-	font-family: $site-serif;
-	margin: auto;
-	width: 300px;
+    font-family: $site-serif;
+    margin: auto;
+    width: 300px;
 }
 
 .formItem {
-	margin: 10px 0;
+    margin: 10px 0;
 }
 
 .nameInputBox {
-	margin: 10px 0;
-	width: 300px;
+    margin: 10px 0;
+    width: 300px;
 }
 
 .descriptionInputBox {
-	height: 300px;
-	margin: 10px 0;
-	width: 300px;
+    height: 300px;
+    margin: 10px 0;
+    width: 300px;
 }
 
 .formError {
-	color: $red;
+    color: #FF0000;
 }
 
 .imageMessage {
-	color: $green;
+    color: #00FF00;
 }

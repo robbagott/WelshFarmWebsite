@@ -1,5 +1,5 @@
 (function () {
-	'use strict';
+    'use strict';
 
-	angular.module('shared_services', ['ngResource']);
+    angular.module('shared_services', ['ngResource']);
 })();

@@ -1,36 +1,7 @@
 /* Color Palette */
 
-/* Grayscale */
-$white: #FFFFFF;
-$white-weak: #EFEFEF;
-$grey-light: #C5C5C5;
-$grey: #808080;
-$grey-dark: #353535;
-$black-weak: #101010;
-$black: #000000;
-
 /* Colors */
 $coral: #CC6060;
-
-$green: #00FF00;
-$red: #FF0000;
-
-/* Site Variables */
-$site-primary: $coral;
-$site-primary-light: lighten($site-primary, 30%);
-$site-primary-dark: darken($site-primary, 30%);
-
-$site-secondary: $black;
-$site-secondary-light: lighten($site-secondary, 30%);
-$site-secondary-dark: darken($site-secondary, 30%);
-
-$site-accent: $black;
-$site-accent-light: lighten($site-accent, 30%);
-$site-accent-dark: darken($site-accent, 30%);
-
-$site-background: $black-weak;
-
-$site-primary-text: $white;
 
 /* Font Families */
 

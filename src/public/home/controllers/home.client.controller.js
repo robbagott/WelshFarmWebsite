@@ -1,12 +1,12 @@
 (function () {
-	'use strict';
+    'use strict';
 
-	angular
-		.module('home')
-		.controller('HomeController', HomeController);
+    angular
+        .module('home')
+        .controller('HomeController', HomeController);
 
-	HomeController.$inject = [];
+    HomeController.$inject = [];
 
-	function HomeController() {
-	}
+    function HomeController() {
+    }
 })();
