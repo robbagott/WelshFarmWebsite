@@ -5,9 +5,8 @@
     "angular": "^1.0.0",
     "angular-route": "^1.5.8",
     "angular-resource": "^1.5.8",
-    "foundation-sites": "^6.3.0"
+    "foundation-sites": "^6.3.0",
+    "font-awesome": "^4.7.0"
   },
-  "devDependencies": {
-    "motion-ui": "^1.2.2"
-  }
+  "devDependencies": {}
 }

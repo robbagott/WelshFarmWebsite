@@ -80,7 +80,7 @@ gulp.task('prod-admin-js', function () {
         .pipe(concat('admin.js'))
         .pipe(uglify())
         .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest(prodDir + 'public/'));
+        .pipe(gulp.dest(prodDir + 'public/js/'));
 });
 
 gulp.task('prod-js', function () {
@@ -95,7 +95,7 @@ gulp.task('prod-js', function () {
         .pipe(concat('all.js'))
         .pipe(uglify())
         .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest(prodDir + 'public/'));
+        .pipe(gulp.dest(prodDir + 'public/js/'));
 });
 
 // Process/move sass to css
@@ -114,7 +114,7 @@ gulp.task('prod-sass', function () {
             browsers: ['last 2 versions', 'ie >= 9', 'and_chr >= 2.3']
         }))
         .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest(prodDir + 'public'))
+        .pipe(gulp.dest(prodDir + 'public/css/'))
         .pipe(browserSync.stream());
 });
 
@@ -133,7 +133,7 @@ gulp.task('prod-vendor', function () {
         .pipe(concat('vendor.js'))
         .pipe(uglify())
         .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest(prodDir + 'public/'));
+        .pipe(gulp.dest(prodDir + 'public/js/'));
 });
 
 // Process/move all non-vendor client side files
@@ -144,7 +144,7 @@ gulp.task('prod-client', function () {
         '!src/public/**/*.scss',
         '!src/public/vendor/**/*'])
         .pipe(plumber())
-        .pipe(gulp.dest(prodDir + 'public'));
+        .pipe(gulp.dest(prodDir + 'public/'));
 });
 
 // Process/move all server files.
