@@ -1,20 +1,19 @@
 body {
-    background: url("../assets/resources/stressed_linen.png") repeat ;
+    background: url("../assets/resources/stressed_linen.png") repeat;
     color: $primary-color;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 }
 
-#logo {
-    display: inline-block;
+.logo {
     font-family: $site-show-font;
     font-size: 40px;
-    margin: 15px 30px;
-    position: relative;
+    margin: 15px;
     user-select: none;
 }
 
-#topBar {
+.header {
+    background: url("../assets/resources/stressed_linen.png") repeat;
     a {
         &:hover {
             color: $primary-color;
@@ -26,25 +25,22 @@ body {
             }
         }
     }
-}
 
-#navbar {
-    display: inline-block;
-    font-family: $site-show-font;
-    height: 100%;
-    position: absolute;
-    right: 0px;
-}
+    .navItem {
+        box-sizing: border-box;
+        display: inline-block;
+        height: 100%;
+        font-family: $site-show-font;
+        font-size: 25px;
+        margin-right: 20px;
+        padding: 20px;
+        position: relative;
+        user-select: none;
+    }
 
-.navbarItem {
-    box-sizing: border-box;
-    display: inline-block;
-    height: 100%;
-    font-size: 25px;
-    margin: 10px 40px 10px 0px;
-    padding: 20px;
-    position: relative;
-    user-select: none;
+    .top-bar-right {
+        background: inherit;
+    }
 }
 
 .footer {
@@ -60,18 +56,20 @@ body {
         text-transform: uppercase;
     }
 
+    .footer-links {
+        list-style-type: none;
+        li {
+            margin-top: .5em;
+        }
+    }
+
     p, a {
         font-size: .8em;
         font-weight: 300;
     }
 }
 
-.footer-links {
-    list-style-type: none;
-    li {
-        margin-top: .5em;
-    }
-}
+
 
 
 @media only screen and (min-width: 40.063em) {

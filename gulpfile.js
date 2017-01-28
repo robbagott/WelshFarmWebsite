@@ -2,6 +2,7 @@ var browserSync = require('browser-sync').create();
 var del = require('del');
 var gulp = require('gulp');
 var autoprefixer = require('gulp-autoprefixer');
+var babel = require('gulp-babel');
 var concat = require('gulp-concat');
 var order = require('gulp-order');
 var plumber = require('gulp-plumber');
@@ -16,9 +17,16 @@ var devDir = 'dist/dev/';
 var vendorDir = 'src/public/vendor/';
 
 var vendorDependencies = [
+    'jquery/dist/jquery.js',
     'angular/angular.js',
     'angular-resource/angular-resource.js',
     'angular-route/angular-route.js',
+    'foundation-sites/js/foundation.core.js',
+    'foundation-sites/js/foundation.util.mediaQuery.js',
+    'foundation-sites/js/foundation.util.motion.js',
+    'foundation-sites/js/foundation.util.triggers.js',
+    'foundation-sites/js/foundation.util.keyboard.js',
+    'foundation-sites/js/foundation.offcanvas.js'
     ];
 
 var vendorSassPaths = [
@@ -97,7 +105,7 @@ gulp.task('prod-sass', function () {
         .pipe(sourcemaps.init())
         .pipe(sass({
             includePaths: vendorSassPaths,
-            outputStyle: 'compressed',
+            //outputStyle: 'compressed',
             outFile: 'all.css'})
             .on('error', sass.logError))
         .pipe(sourcemaps.write({includeContent: false}))        // Needed for the sourcemaps to turn out correctly -_-
@@ -119,6 +127,9 @@ gulp.task('prod-vendor', function () {
     return gulp.src(vendorList)
         .pipe(plumber())
         .pipe(sourcemaps.init())
+        .pipe(babel({
+            presets: ['es2015']
+        }))
         .pipe(concat('vendor.js'))
         .pipe(uglify())
         .pipe(sourcemaps.write('./'))

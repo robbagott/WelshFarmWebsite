@@ -11,47 +11,80 @@
     <link rel="stylesheet" href="all.css" />
 </head>
 <body>
-    <div id="topBar">
-        <div id="logo"><a href="/home">Faylin Welsh</a></div>
-        <div id="navbar">
-            <div class="navbarItem"><a href="/contact">Blog</a></div>
-            <div class="navbarItem"><a href="/horses">Horses</a></div>
-            <div class="navbarItem"><a href="/about">About</a></div>
-        </div>
-    </div>
-    <section id="content" ng-view></section>
+    <div class="off-canvas position-right" id="offCanvas" data-off-canvas>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="row">
-        <div class="small-6 medium-3 large-2 large-centered columns">
-            <h2>Contact Us</h2>
-            <h8> Address </h8>
-            <p>
-                267 Murphy Lane
-                Keatchie, LA 71046
-            </p>
-        </div>
-        <div class="small-6 medium-3 large-2 large-centered columns">
-            <h2>Site Map</h2>
-            <ul class="footer-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Horses</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact Us</a></li>
+        <!-- Close button -->
+        <button class="close-button" aria-label="Close menu" type="button" data-close>
+            <span aria-hidden="true">&times;</span>
+        </button>
+
+        <!-- Menu -->
+        <ul class="vertical menu">
+            <li><a href="/home">Home</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/horses">Horses</a></li>
+            <li><a href="/about">About</a></li>
+        </ul>
+    </div>
+
+    <div class="off-canvas-content" data-off-canvas-content>
+        <!-- Top Bar -->
+        <div class="top-bar header">
+            <div class="top-bar-left">
+                <div class="logo">
+                    <a href="/home">Faylin Welsh</a>
+                </div>
+            </div>
+            <ul class="top-bar-right show-for-large">
+                <li class="navItem">
+                    <a href="/contact">Blog</a>
+                </li>
+                <li class="navItem">
+                    <a href="/horses">Horses</a>
+                </li>
+                <li class="navItem">
+                    <a href="/about">About</a>
+                </li>
             </ul>
+            <div class="top-bar-right hamburger hide-for-large">
+                <button type="button" class="fa fa-bars" data-toggle="offCanvas">Open Menu</button>
+            </div>
         </div>
-        <div class="small-6 medium-3 large-2 large-centered columns">
-            <h2>Follow Us</h2>
-            <ul class="footer-links">
-                <li><a href="#">Facebook</a></li>
-            <ul>
-        </div>
-        </div>
-    </footer>
+
+        <!-- Content -->
+        <section id="content" ng-view></section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="row">
+                <div class="small-4 large-2 large-centered column">
+                    <h4>Contact Us</h4>
+                    <h8> Address </h8>
+                    <p>
+                        267 Murphy Lane
+                        Keatchie, LA 71046
+                    </p>
+                </div>
+                <div class="small-4 large-2 large-centered column">
+                    <h4>Site Map</h4>
+                    <ul class="footer-links">
+                        <li><a href="/home">Home</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/horses">Horses</a></li>
+                        <li><a href="/about">About</a></li>
+                    <h4>Follow Us</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Facebook</a></li>
+                    <ul>
+                </div>
+            </div>
+        </footer>
+    </div>
 
     <script type="text/javascript" src="vendor.js"></script>
     <script type="text/javascript" src="all.js"></script>
+    <script type="text/javascript">
+        $(document).foundation();
+    </script>
 </body>
 </html>
