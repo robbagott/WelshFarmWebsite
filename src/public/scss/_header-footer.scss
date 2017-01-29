@@ -12,9 +12,25 @@ body {
     user-select: none;
 }
 
+.hamburger-menu {
+    background: url("../assets/resources/stressed_linen.png") repeat;
+
+    .menu {
+        margin-top: 20px;
+        text-align: center;
+
+        li {
+            font-size: 20px;
+            list-style: none;
+            margin: 10px;
+        }
+    }
+}
+
 .header {
     background: url("../assets/resources/stressed_linen.png") repeat;
     @include top-bar-unstack;
+
     a {
         &:hover {
             color: $primary-color;
@@ -29,6 +45,7 @@ body {
 
     .hamburger {
         color: $white;
+        cursor: pointer;
         font-size: 2em;
         margin: 15px;
     }
@@ -72,6 +89,10 @@ body {
         margin: 0 12px;
         text-align: left;
         vertical-align: text-top;
+    }
+
+    .copyright {
+        color: #505050;
     }
 
     .sub-header {
