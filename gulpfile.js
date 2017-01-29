@@ -156,11 +156,19 @@ gulp.task('prod-server', function () {
         .pipe(gulp.dest(prodDir));
 });
 
+// Process/move all server files.
+gulp.task('prod-fonts', function () {
+    return gulp.src([
+        vendorDir + 'font-awesome/fonts/**/*'
+        ])
+        .pipe(gulp.dest(prodDir + 'public/fonts/'));
+});
+
 /**
  * Task Shortcuts
  */
 
-gulp.task('prod', ['prod-js', 'prod-sass', 'prod-server', 'prod-client', 'prod-vendor', 'prod-admin-js']);
+gulp.task('prod', ['prod-js', 'prod-sass', 'prod-server', 'prod-client', 'prod-vendor', 'prod-admin-js', 'prod-fonts']);
 
 gulp.task('watch', ['watch-sass', 'watch-js']);
 

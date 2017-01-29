@@ -26,6 +26,12 @@ body {
         }
     }
 
+    .hamburger {
+        color: $white;
+        font-size: 2em;
+        margin: 15px;
+    }
+
     .navItem {
         box-sizing: border-box;
         display: inline-block;
