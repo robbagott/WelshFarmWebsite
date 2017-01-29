@@ -57,25 +57,42 @@
         <!-- Footer -->
         <footer class="footer">
             <div class="row">
-                <div class="small-4 large-2 large-centered column">
-                    <h4>Contact Us</h4>
-                    <h8> Address </h8>
-                    <p>
-                        267 Murphy Lane
-                        Keatchie, LA 71046
-                    </p>
+                <div class="medium-4 medium-centered column">
+                    <h4>Get in Touch</h4>
+                    <div class="contact-info">
+                        <div class="sub-header">Address</div>
+                        <p>
+                            267 Murphy Lane<br>
+                            Keatchie, LA 71046
+                        </p>
+                    </div>
+                    <div class="contact-info">
+                        <div class="sub-header">Phone</div>
+                        <p>
+                            (318) 933-8600
+                        </p>
+                    </div>
                 </div>
-                <div class="small-4 large-2 large-centered column">
-                    <h4>Site Map</h4>
-                    <ul class="footer-links">
-                        <li><a href="/home">Home</a></li>
-                        <li><a href="/blog">Blog</a></li>
-                        <li><a href="/horses">Horses</a></li>
-                        <li><a href="/about">About</a></li>
-                    <h4>Follow Us</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Facebook</a></li>
-                    <ul>
+                <div class="medium-4 medium-centered column">
+                    <h4>Visit on Social Media</h4>
+                    <div class="contact-info">
+                        <div class="social-media fa fa-facebook"></div>
+                    </div>
+                </div>
+                <div class="medium-4 medium-centered column">
+                    <div>
+                        <h4>Site Navigation</h4>
+                        <ul class="footer-links">
+                            <li><a href="/home">Home</a></li>
+                            <li><a href="/blog">Blog</a></li>
+                            <li><a href="/horses">Horses</a></li>
+                            <li><a href="/about">About</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-12 column copyright">
                 </div>
             </div>
         </footer>
@@ -84,7 +101,15 @@
     <script type="text/javascript" src="js/vendor.js"></script>
     <script type="text/javascript" src="js/all.js"></script>
     <script type="text/javascript">
-        $(document).foundation();
+        (function () {
+            // Initialize Foundation
+            $(document).foundation();
+
+            //Insert copyright notice.
+            var currentYear = (new Date()).getFullYear();
+            var copyrightText = '© ' + currentYear + ' Faylin Welsh Pony Farm. All Rights Reserved.'
+            $('.copyright').append(copyrightText);
+        })();
     </script>
 </body>
 </html>

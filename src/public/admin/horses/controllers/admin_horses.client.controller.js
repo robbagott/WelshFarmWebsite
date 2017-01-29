@@ -12,18 +12,18 @@
 
         // Fields
         self.horse = {
-            birthDate: undefined,
-            color: undefined,
-            dam: undefined,
-            description: undefined,
-            farmName: undefined,
-            gelded: undefined,
-            grey: undefined,
+            birthDate: '',
+            color: '',
+            dam: '',
+            description: '',
+            farmName: '',
+            gelded: false,
+            grey: false,
             height: undefined,
             imageFiles: [],
-            sex: undefined,
-            showName: undefined,
-            sire: undefined,
+            sex: 'male',
+            showName: '',
+            sire: ''
         }
         self.imageMessage = "";
         self.list = [];

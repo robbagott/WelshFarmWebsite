@@ -62,6 +62,8 @@ gulp.task('browser-sync', ['prod-sass', 'prod-client'], function () {
     gulp.watch('src/public/**/*.scss', ['prod-sass']);
     gulp.watch('src/**/*.ejs', ['prod-server']).on('change', browserSync.reload);
     gulp.watch('src/public/**/*.html').on('change', browserSync.reload);
+    gulp.watch(['src/public/**/*.js', '!src/public/admin/**/*'], ['prod-js']).on('change', browserSync.reload);
+    gulp.watch('src/public/admin/**/*.js', ['prod-admin-js']).on('change', browserSync.reload);
 });
 
 /**
