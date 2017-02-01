@@ -3,18 +3,10 @@
 */
 
 .controlsContainer {
-    height: 100px;
+    min-height: 100px;
     margin: auto;
     text-align: center;
-    width: 1000px;
-}
-
-.filtersLabel {
-    display: block;
-    height: auto;
-    margin: 0px 10px 0px 0px;
-    position: relative;
-    width: 150px;
+    max-width: 1000px;
 }
 
 .filter {
@@ -28,26 +20,25 @@
     input {
         display: none;
     }
-}
 
-.pressButton {
-    background-color: transparent;
-    border: 2px solid $primary-color;
-    bottom: 0;
-    cursor: pointer;
-    font-family: $site-sans-title;
-    left: 0;
-    line-height: 2.2;
-    position: absolute;
-    right: 0;
-    top: 0;
-    transition: background-color 100ms ease;
-    user-select: none;
-}
+    .pressButton {
+        background-color: transparent;
+        border: 2px solid $primary-color;
+        bottom: 0;
+        cursor: pointer;
+        font-family: $site-sans-title;
+        left: 0;
+        line-height: 2.2;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: background-color 100ms ease;
+        user-select: none;
+    }
 
-
-input:checked + .pressButton {
-    background-color: $primary-color;
+    input:checked + .pressButton {
+        background-color: $primary-color;
+    }
 }
 
 /*
@@ -59,16 +50,16 @@ input:checked + .pressButton {
     margin: 0 auto;
     max-width: 1000px;
     text-align: center;
-}
 
-.horseEntry {
-    display: inline-block;
-    font-family: $site-sans-title;
-    margin: 20px 20px;
-    overflow: hidden;
-    text-align: left;
-    vertical-align: top;
-    width: 300px;
+    .horseEntry {
+        display: inline-block;
+        font-family: $site-sans-title;
+        margin: 20px 20px;
+        overflow: hidden;
+        text-align: left;
+        vertical-align: top;
+        width: 300px;
+    }
 }
 
 .horseImageWrapper {

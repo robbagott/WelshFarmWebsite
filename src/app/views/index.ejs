@@ -2,110 +2,135 @@
 <html>
 <head>
     <title>Faylin Welsh</title>
-    <base href="/"></base>
+    <base href="/">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- some cool fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans|Pacifico|Source+Sans+Pro|Work+Sans" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans%7CPacifico%7CSource+Sans+Pro%7CWork+Sans" />
 
     <link rel="stylesheet" href="css/vendor.css" />
     <link rel="stylesheet" href="css/all.css" />
 </head>
 <body>
-    <div class="off-canvas position-right hamburger-menu" id="offCanvas" data-off-canvas>
-        <!-- Menu -->
+
+<!-- Off-canvas Menu -->
+<div
+    class="off-canvas position-right hamburger-menu"
+    id="offCanvas"
+    data-off-canvas
+    data-close-on-click="true">
+    <!-- Menu -->
+    <nav class="tab-bar hide-for-large-up" data-topbar>
         <ul class="vertical menu">
             <li><a href="/home">Home</a></li>
             <li><a href="/blog">Blog</a></li>
             <li><a href="/horses">Horses</a></li>
             <li><a href="/about">About</a></li>
         </ul>
-    </div>
+    </nav>
+</div>
 
-    <div class="off-canvas-content" data-off-canvas-content>
-        <!-- Top Bar -->
-        <div class="top-bar header">
-            <div class="top-bar-left">
-                <div class="logo">
-                    <a href="/home">Faylin Welsh</a>
+<!-- Non-off-canvas Menu Content -->
+<div class="off-canvas-content" data-off-canvas-content>
+    <!-- Page Content -->
+    <div class="page-content-wrapper">
+        <div class="page-content">
+            <!-- Top Bar -->
+            <div class="top-bar header">
+                <div class="top-bar-left">
+                    <div class="logo">
+                        <a href="/home">Faylin Welsh</a>
+                    </div>
+                </div>
+                <ul class="top-bar-right show-for-large">
+                    <li class="navItem">
+                        <a href="/contact">Blog</a>
+                    </li>
+                    <li class="navItem">
+                        <a href="/horses">Horses</a>
+                    </li>
+                    <li class="navItem">
+                        <a href="/about">About</a>
+                    </li>
+                </ul>
+                <div class="top-bar-right hamburger hide-for-large">
+                    <div class="fa fa-bars" data-toggle="offCanvas"></div>
                 </div>
             </div>
-            <ul class="top-bar-right show-for-large">
-                <li class="navItem">
-                    <a href="/contact">Blog</a>
-                </li>
-                <li class="navItem">
-                    <a href="/horses">Horses</a>
-                </li>
-                <li class="navItem">
-                    <a href="/about">About</a>
-                </li>
-            </ul>
-            <div class="top-bar-right hamburger hide-for-large">
-                <div class="fa fa-bars" data-toggle="offCanvas"></div>
+
+            <!-- Content -->
+            <section ng-view></section>
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="row">
+            <div class="small-12 medium-4 medium-centered column">
+                <h4>Contact us</h4>
+                <div class="contact-info">
+                    <div class="sub-header">Located in</div>
+                    <p>
+                        Keatchie, LA 71046
+                    </p>
+                </div>
+                <div class="contact-info">
+                    <div class="sub-header">Phone</div>
+                    <a href="tel:318-933-8600">
+                        (318) 933-8600
+                    </a>
+                </div>
+                <div class="contact-info">
+                    <div class="sub-header">Email</div>
+                    <a target="_blank" href="mailto:FaylinWelsh@gmail.com">
+                        FaylinWelsh@gmail.com
+                    </a>
+                </div>
+            </div>
+            <div class="small-12 medium-4 medium-centered column">
+                <h4>Visit Us on Social Media</h4>
+                <div class="contact-info">
+                    <a target="_blank" href="https://www.facebook.com/Faylin-Welsh-520889941453247/">
+                        <div class="social-media fa fa-facebook"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="small-12 medium-4 medium-centered column">
+                <div>
+                    <h4>Site Navigation</h4>
+                    <ul class="footer-links">
+                        <li><a href="/home">Home</a></li>
+                        <li><a href="/blog">Blog</a></li>
+                        <li><a href="/horses">Horses</a></li>
+                        <li><a href="/about">About</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-
-        <!-- Content -->
-        <section id="content" ng-view></section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="row">
-                <div class="medium-4 medium-centered column">
-                    <h4>Get in Touch</h4>
-                    <div class="contact-info">
-                        <div class="sub-header">Address</div>
-                        <p>
-                            267 Murphy Lane<br>
-                            Keatchie, LA 71046
-                        </p>
-                    </div>
-                    <div class="contact-info">
-                        <div class="sub-header">Phone</div>
-                        <p>
-                            (318) 933-8600
-                        </p>
-                    </div>
-                </div>
-                <div class="medium-4 medium-centered column">
-                    <h4>Visit on Social Media</h4>
-                    <div class="contact-info">
-                        <a target="_tab" href="https://www.facebook.com/Faylin-Welsh-520889941453247/">
-                            <div class="social-media fa fa-facebook"></div>
-                        </a>
-                    </div>
-                </div>
-                <div class="medium-4 medium-centered column">
-                    <div>
-                        <h4>Site Navigation</h4>
-                        <ul class="footer-links">
-                            <li><a href="/home">Home</a></li>
-                            <li><a href="/blog">Blog</a></li>
-                            <li><a href="/horses">Horses</a></li>
-                            <li><a href="/about">About</a></li>
-                        </ul>
-                    </div>
-                </div>
+        <div class="row">
+            <div class="small-12 column copyright">
             </div>
-            <div class="row">
-                <div class="small-12 column copyright">
-                </div>
-            </div>
-        </footer>
-    </div>
+        </div>
+    </footer>
+</div>
 
-    <script type="text/javascript" src="js/vendor.js"></script>
-    <script type="text/javascript" src="js/all.js"></script>
-    <script type="text/javascript">
-        (function () {
-            // Initialize Foundation
-            $(document).foundation();
+<script type="text/javascript" src="js/vendor.js"></script>
+<script type="text/javascript" src="js/all.js"></script>
+<script type="text/javascript">
+    (function () {
+        // Initialize Foundation
+        $(document).foundation();
 
-            //Insert copyright notice.
-            var currentYear = (new Date()).getFullYear();
-            var copyrightText = '© ' + currentYear + ' Faylin Welsh Pony Farm. All Rights Reserved.'
-            $('.copyright').append(copyrightText);
-        })();
-    </script>
+
+        // Ensure that the side menu is closed. The side menu opening on load seems to be a bug
+        // in some versions of mobile safari.
+        $('#offCanvas').foundation('close');
+
+        //Insert copyright notice.
+        var currentYear = (new Date()).getFullYear();
+        var copyrightText = 'Copyright © ' + currentYear + ' Faylin Welsh Pony Farm. All Rights Reserved.'
+        $('.copyright').append(copyrightText);
+    })();
+</script>
 </body>
 </html>

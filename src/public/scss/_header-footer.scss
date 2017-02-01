@@ -1,8 +1,20 @@
+html {
+    height: 100%;
+}
+
 body {
     background: url("../assets/resources/stressed_linen.png") repeat;
     color: $primary-color;
     margin: 0;
+    height: 100%;
     padding: 0;
+}
+
+.off-canvas-content {
+    height: 100%;
+}
+.page-content-wrapper {
+    min-height: 100%;
 }
 
 .logo {
@@ -10,6 +22,10 @@ body {
     font-size: 40px;
     margin: 15px;
     user-select: none;
+
+    @include breakpoint(small down) {
+        font-size: 30px;
+    }
 }
 
 .hamburger-menu {
@@ -20,7 +36,8 @@ body {
         text-align: center;
 
         li {
-            font-size: 20px;
+            font-family: $site-show-font;
+            font-size: 1.5rem;
             list-style: none;
             margin: 10px;
         }
@@ -67,12 +84,24 @@ body {
     }
 }
 
+.page-content {
+    padding-bottom: 170px;
+
+    @include breakpoint(small only) {
+        padding-bottom: 330px;
+    }
+}
+
 .footer {
     color: #A0A0A0;
     font-size: 12px;
-    margin: 30px 0;
+    margin-top: -170px;
     text-align: center;
     width: 100%;
+
+    @include breakpoint(small only) {
+        margin-top: -330px;
+    }
 
     a {
         color: $primary-color;
@@ -81,6 +110,7 @@ body {
     a, p {
         font-size: 12px;
         font-weight: 300;
+        line-height: 1;
         margin: 5px;
     }
 
@@ -93,6 +123,7 @@ body {
 
     .copyright {
         color: #505050;
+        margin-top: 1em;
     }
 
     .sub-header {
@@ -112,8 +143,8 @@ body {
         font-size: 12px;
         font-weight: 400;
         margin: 10px auto;
+        max-width: 250px;
         text-transform: uppercase;
-        width: 250px;
     }
 
     .social-media {
