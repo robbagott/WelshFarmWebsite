@@ -61,7 +61,7 @@ gulp.task('browser-sync', ['prod-sass', 'prod-client'], function () {
 
     gulp.watch('src/public/**/*.scss', ['prod-sass']);
     gulp.watch('src/**/*.ejs', ['prod-server']).on('change', browserSync.reload);
-    gulp.watch('src/public/**/*.html').on('change', browserSync.reload);
+    gulp.watch('src/public/**/*.html', ['prod-client']).on('change', browserSync.reload);
     gulp.watch(['src/public/**/*.js', '!src/public/admin/**/*'], ['prod-js']).on('change', browserSync.reload);
     gulp.watch('src/public/admin/**/*.js', ['prod-admin-js']).on('change', browserSync.reload);
 });
@@ -174,4 +174,4 @@ gulp.task('prod', ['prod-js', 'prod-sass', 'prod-server', 'prod-client', 'prod-v
 
 gulp.task('watch', ['watch-sass', 'watch-js']);
 
-gulp.task('default', ['prod']);
+gulp.task('default', ['browser-sync']);

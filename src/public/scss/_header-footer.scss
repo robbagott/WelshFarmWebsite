@@ -163,3 +163,47 @@ body {
         margin: 0;
     }
 }
+
+.navItem a {
+    padding: 10px;
+    color: #FFFFFF;
+    font-weight: 700;
+    text-shadow: none;
+    transition: color 0.3s;
+}
+
+.navItem a::before,
+.navItem a::after {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: $primary-color;
+    content: '';
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    transform: translateY(-10px);
+}
+
+.navItem a::before {
+    top: 15px;
+    transform: translateY(-10px);
+}
+
+.navItem a::after {
+    bottom: 15px;
+    transform: translateY(10px);
+}
+
+.navItem a:hover,
+.navItem a:focus {
+    color: $primary-color;
+}
+
+.navItem a:hover::before,
+.navItem a:focus::before,
+.navItem a:hover::after,
+.navItem a:focus::after {
+    opacity: 1;
+    transform: translateY(0px);
+}
