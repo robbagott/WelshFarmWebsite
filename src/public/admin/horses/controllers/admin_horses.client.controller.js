@@ -75,7 +75,6 @@
         }
 
         function findOne() {
-            console.log('finding one');
             self.horse = HorseApi.get({
                 horseName: $routeParams.horseName
             });
@@ -83,7 +82,6 @@
 
         function update() {
             self.horse.param_showName = self.horse.showName;
-            console.log(self.horse.farmName);
             self.horse.$update(function () {
                 window.alert('Your horse was updated successfully');
             }, function (err) {
@@ -106,7 +104,6 @@
         }
 
         function getFileNames(elem) {
-            console.log(elem);
             var files = elem.files;
             var fileNames = [];
 
@@ -139,8 +136,6 @@
                             self.imageMessage += file.name + " added\n";
                             self.imageError = "";
                             $scope.$apply();
-
-                            console.log(self.horse.imageFiles);
                         }
                         reader.readAsDataURL(file);
                     })(imageFiles[i]);

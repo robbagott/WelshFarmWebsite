@@ -5,9 +5,9 @@
         .module('horses')
         .controller('HorsesController', HorsesController);
 
-    HorsesController.$inject = ['$routeParams', '$q', 'HorseApi'];
+    HorsesController.$inject = ['$routeParams', '$q', '$scope', 'HorseApi'];
 
-    function HorsesController($routeParams, $q, HorseApi) {
+    function HorsesController($routeParams, $q, $scope, HorseApi) {
         var self = this;
 
         // Fields
@@ -21,8 +21,11 @@
         self.refreshList = refreshList;
 
         function init() {
-            find().then(function () {
+            find().then(function (list) {
+                console.log(list);
                 self.refreshList();
+            }, function (err) {
+                console.log(err);
             });
         }
 
@@ -30,7 +33,6 @@
         function find() {
             return $q(function (resolve, reject) {
                 self.list = HorseApi.query(function () {
-                    console.log(self.list);
                     // Sort horses into categories when they come in.
                     // Also tack on age.
                     angular.forEach(self.list, function(horse, i) {
@@ -46,10 +48,19 @@
                         } else {
                             horse.categories.push('mares');
                         }
+
+                        var birthDate = new Date(horse.birthDate);
+                        var now = new Date();
+                        horse.ageInMonths = now.getMonth() - birthDate.getMonth() + 12 * (now.getFullYear() - birthDate.getFullYear());
+                        console.log(horse.ageInMonths);
+                        if (horse.ageInMonths < 12) {
+                            horse.categories.push('young_stock');
+                        }
                     });
+
                     resolve(self.list);
                 }, function (error) {
-                        reject('Query for horses was unsuccessful');
+                    return reject('Query for horses was unsuccessful');
                 });
             });
         }
@@ -62,7 +73,5 @@
                 }
             });
         }
-
-
     }
 })();
