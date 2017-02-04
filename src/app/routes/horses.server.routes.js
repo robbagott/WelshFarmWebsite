@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var horses = require('../controllers/horse.server.controller');
 var images = require('../controllers/images.server.controller');
