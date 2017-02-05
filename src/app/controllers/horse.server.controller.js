@@ -3,23 +3,15 @@
 var mongoose = require('mongoose');
 var Horse = mongoose.model('Horse');
 
-// Convenience function for extracting error messages
-var getErrorMessage = function (err) {
-    console.log(err);
-    if (err.errors) {
-        for (var errName in err.errors) {
-            if (err.errors[errName].message) {
-                return err.errors[errName].message;
-            }
-        }
-    }
-    else {
-        return 'Unknown server error';
-    }
-};
+exports.create = create;
+exports.remove = remove;
+exports.horseByName = horseByName;
+exports.list = list;
+exports.read = read;
+exports.update = update;
 
 // Try to create and save a horse with the req.body. If there is an error, it is returned in the response
-exports.create = function (req, res) {
+function create(req, res) {
     var horse = new Horse(req.body);
     horse.save(function (err) {
         if (err) {
@@ -34,7 +26,7 @@ exports.create = function (req, res) {
 };
 
 // Gets the full list of horses. If there is an error, it is returned in the response
-exports.list = function (req, res) {
+function list(req, res) {
     Horse.find().sort('showName').exec(function (err, horses) {
         if (err) {
             return res.status(400).send({
@@ -48,7 +40,7 @@ exports.list = function (req, res) {
 };
 
 // Gets a horse by name. If there is an error, it is returned in the response
-exports.horseByName = function (req, res, next, name) {
+function horseByName(req, res, next, name) {
     Horse.findOne({
         showName: name
     }).exec(function (err, horse) {
@@ -63,17 +55,30 @@ exports.horseByName = function (req, res, next, name) {
     });
 };
 
-exports.read = function (req, res) {
+function read(req, res) {
     res.json(req.horse);
 };
 
+// Removes a horse from the database.
+function remove(req, res) {
+    var horse = req.horse;
+
+    horse.remove(function (err) {
+        if (err) {
+            return res.status(400).send({
+                message: getErrorMessage(err)
+            });
+        }
+        else {
+            res.json(horse);
+        }
+    });
+};
+
 // Tries to update a horse. If there is an error, it is returned in the response. Assumes that req.horse is a horse that has been retrieved by middleware.
-exports.update = function (req, res) {
+function update(req, res) {
     var horse = req.horse;
     var updates = req.body;
-
-    console.log(updates);
-    console.log(horse);
 
     for (var prop in updates) {
         horse[prop] = updates[prop];
@@ -91,17 +96,21 @@ exports.update = function (req, res) {
     });
 };
 
-exports.delete = function (req, res) {
-    var horse = req.horse;
+/*
+ * Helper functions
+ */
 
-    horse.remove(function (err) {
-        if (err) {
-            return res.status(400).send({
-                message: getErrorMessage(err)
-            });
+// Convenience function for extracting error messages
+function getErrorMessage(err) {
+    console.log(err);
+    if (err.errors) {
+        for (var errName in err.errors) {
+            if (err.errors[errName].message) {
+                return err.errors[errName].message;
+            }
         }
-        else {
-            res.json(horse);
-        }
-    });
+    }
+    else {
+        return 'Unknown server error';
+    }
 };

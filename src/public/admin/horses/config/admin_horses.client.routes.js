@@ -8,7 +8,6 @@
     configureAdminHorsesRoute.$inject = ['$routeProvider'];
 
     function configureAdminHorsesRoute($routeProvider) {
-        console.log('Configured admin horses routes');
         $routeProvider
             .when('/admin/horses', {
                 templateUrl: '/admin/horses/views/admin_horses.client.view.html'

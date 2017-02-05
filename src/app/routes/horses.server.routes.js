@@ -12,7 +12,7 @@ module.exports = function(app) {
     app.route('/api/horses/:horseName')
         .get(horses.read)
         .put(horses.update)
-        .delete(horses.delete);
+        .delete(horses.remove);
 
     app.param('horseName', horses.horseByName);
 };
